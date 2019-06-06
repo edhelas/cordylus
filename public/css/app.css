@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Forum';
+    src: url('Forum-Regular.ttf')  format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    list-style-type: none;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #999;
+}
+
+a:link:hover, a:visited:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: 'Forum', cursive;
+    background-color: #111;
+    color: white;
+    max-width: 1480px;
+    font-size: 8px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+}
+
+header h1 a:link,
+header h1 a:visited {
+    color: white;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #CCC;
+}
+
+footer {
+    padding: 3rem 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+ul.gallery {
+    max-width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.gallery li {
+    flex: 0 1 33.33%;
+    display: inline-block;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+ul.gallery li div.label {
+    background-color: rgba(0, 0, 0, 0.75);
+    display: block;
+    position: absolute;
+    bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+ul.gallery li div.label h1 {
+    display: inline;
+    font-size: 2rem;
+    line-height: 3rem;
+    padding-right: 0.5rem;
+}
+
+ul.gallery li div.label span {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    ul.gallery li {
+        flex: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    ul.gallery li {
+        flex: 0 1 100%;
+    }
+}
+
+ul.gallery li img {
+    width: 100%;
+}
