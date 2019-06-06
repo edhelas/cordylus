@@ -63,17 +63,6 @@ class ShootingPhotoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -96,6 +85,14 @@ class ShootingPhotoController extends Controller
         //
     }
 
+    public function setPrimary(Shooting $shooting, int $photoId)
+    {
+        $shooting->primary_photo_id = $photoId;
+        $shooting->save();
+
+        return redirect()->route('shootings.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -106,6 +103,11 @@ class ShootingPhotoController extends Controller
     {
         $photo->deleteThumbnails();
         $photo->delete();
+
+        if ($shooting->primary_photo_id == $photo->id) {
+            $shooting->primary_photo_id = null;
+            $shooting->save();
+        }
 
         return redirect()->route('shootings.index');
     }

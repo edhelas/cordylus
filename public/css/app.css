@@ -37,6 +37,7 @@ header {
 
 header h1 {
     font-size: 3rem;
+    line-height: 4rem;
 }
 
 header h1 a:link,
@@ -45,8 +46,14 @@ header h1 a:visited {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
     color: #CCC;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
 footer {
@@ -69,8 +76,24 @@ ul.gallery li {
     flex: 0 1 33.33%;
     display: inline-block;
     padding: 0.75rem;
+    padding-bottom: 0;
     box-sizing: border-box;
     position: relative;
+}
+
+ul.gallery li.active:hover {
+    cursor: pointer;
+}
+
+ul.gallery li.large {
+    flex: 0 1 100%;
+    text-align: center;
+}
+
+ul.gallery li.large img {
+    max-height: 100vh;
+    max-width: 100%;
+    width: auto;
 }
 
 ul.gallery li div.label {
@@ -93,7 +116,7 @@ ul.gallery li div.label span {
 }
 
 @media screen and (max-width: 1024px) {
-    ul.gallery li {
+    ul.gallery li:not(.large) {
         flex: 50%;
     }
 }
@@ -106,4 +129,5 @@ ul.gallery li div.label span {
 
 ul.gallery li img {
     width: 100%;
+    box-shadow: black 0 0 2rem;
 }

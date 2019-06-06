@@ -17,6 +17,7 @@ class CreateShootingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
+            $table->string('location')->nullable();
             $table->date('date');
             $table->timestamps();
 

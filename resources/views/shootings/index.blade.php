@@ -17,7 +17,7 @@
         <tr>
             <th>
                 {{$shooting->name}}<br />
-                {{$shooting->date}}<br />
+                {{$shooting->date->format('M j, Y')}}<br />
                 <a href="{{ route('shootings.edit', $shooting) }}" class="btn btn-warning btn-sm">Edit</a>
             </th>
             <td>
@@ -41,6 +41,12 @@
             <td>
                 @foreach ($shooting->photos as $photo)
                     <img src="{{asset('storage/'.$photo->path('s'))}}"/>
+                    <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
+                        @if ($shooting->primary_photo_id == $photo->id)
+                            disabled
+                        @endif
+                    ">D
+                    </a>
                     <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" class="btn btn-danger btn-sm">x</a>
                 @endforeach
                 <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm">Add</a>

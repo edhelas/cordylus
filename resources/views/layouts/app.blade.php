@@ -10,11 +10,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/utils.js') }}" defer></script>
 </head>
 <body>
     <header>
         <h1><a href="/">{{ config('app.name', 'Laravel') }}</a></h1>
         <h2>@yield('subtitle', 'Fetish photography')</h2>
+        @yield('subsubtitle')
     </header>
     <main>
         @yield('content')

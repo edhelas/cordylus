@@ -20,6 +20,11 @@ class CreatePhotosTable extends Migration
             $table->foreign('shooting_id')->references('id')->on('shootings');
             $table->timestamps();
         });
+
+        Schema::table('shootings', function (Blueprint $table) {
+            $table->unsignedBigInteger('primary_photo_id')->nullable();
+            $table->foreign('primary_photo_id')->references('id')->on('photos')->onDelete('set null');
+        });
     }
 
     /**
@@ -29,6 +34,10 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
+        Schema::table('shootings', function (Blueprint $table) {
+            $table->dropColumn('primary_photo_id');
+        });
+
         Schema::dropIfExists('photos');
     }
 }

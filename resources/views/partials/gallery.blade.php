@@ -1,8 +1,8 @@
 <ul class="gallery">
     @foreach ($shootings as $shooting)
-        <li>
+        <li class="active" onclick="redirect('{{route('shootings.show.slug', $shooting->slug)}}')">
             @if ($shooting->photos()->count() > 0)
-                <img src="{{asset('storage/'.$shooting->photos()->first()->path('xl'))}}"/>
+                <img src="{{asset('storage/'.$shooting->primary->path('xl'))}}"/>
             @endif
             <div class="label">
                 <h1>{{ $shooting->name }}</h1>

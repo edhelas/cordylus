@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shooting extends Model
 {
-    protected $fillable = ['name', 'date', 'slug'];
+    protected $dates = ['date'];
+    protected $fillable = ['name', 'date', 'slug', 'primary_photo_id'];
 
     public function photos()
     {
@@ -23,5 +24,14 @@ class Shooting extends Model
         return $this->models->map(function ($item, $key) {
             return '<a href="'.route('models.show.slug', $item->slug).'">'.$item->name.'</a>';
         })->implode(', ');
+    }
+
+    public function getPrimaryAttribute()
+    {
+        if ($this->primary_photo_id) {
+            return $this->photos()->where('id', $this->primary_photo_id)->first();
+        }
+
+        return $this->photos()->first();
     }
 }
