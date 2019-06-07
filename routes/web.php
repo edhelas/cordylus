@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@welcome');
+Route::get('/', 'ShootingController@index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('shootings', 'Admin\ShootingController');

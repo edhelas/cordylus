@@ -112,7 +112,7 @@ ul.gallery li div.label h1 {
 }
 
 ul.gallery li div.label span {
-    font-size: 1rem;
+    font-size: 1.15rem;
 }
 
 @media screen and (max-width: 1024px) {

@@ -27,11 +27,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function welcome()
-    {
-        return view('welcome', [
-            'shootings' => Shooting::orderBy('date', 'desc')->get()
-        ]);
-    }
 }
