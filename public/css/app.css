@@ -62,6 +62,29 @@ footer {
     font-size: 1.1rem;
 }
 
+p.warning {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: 1rem auto;
+}
+
+.grid li {
+    flex: 0 1 25%;
+    display: inline-block;
+}
+
+.grid li img {
+    width: 100%;
+}
+
 ul.gallery {
     max-width: 100%;
 
@@ -131,4 +154,33 @@ ul.gallery li div.label span {
 ul.gallery li img {
     width: 100%;
     box-shadow: black 0 0 2rem;
+}
+
+/* Welcome logo */
+ul.logo {
+    margin: 0 auto;
+    font-size: 1.75rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+ul.logo.second {
+    font-size: 1.2rem;
+}
+
+ul.logo li {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-right: 1rem;
+}
+
+ul.logo li img {
+    width: 2.5rem;
+    margin-right: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+ul.logo.second li img {
+    width: 1.8rem;
 }

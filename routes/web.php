@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ShootingController@index');
+Route::get('/', 'ShootingController@welcome')->name('welcome');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('shootings', 'Admin\ShootingController');
@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('shootings/{shooting}/models/{model}/remove', 'Admin\ShootingModelController@destroy')->name('shootings.models.remove');
 });
 
+Route::get('g/', 'ShootingController@index')->name('shootings.gallery');
 Route::get('m/{slug}', 'ModelController@show')->name('models.show.slug');
 Route::get('s/{slug}', 'ShootingController@show')->name('shootings.show.slug');
 

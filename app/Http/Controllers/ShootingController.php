@@ -9,9 +9,14 @@ use App\Shooting;
 
 class ShootingController extends Controller
 {
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     public function index()
     {
-        return view('welcome', [
+        return view('shootings.gallery', [
             'shootings' => Shooting::orderBy('date', 'desc')->get()
         ]);
     }

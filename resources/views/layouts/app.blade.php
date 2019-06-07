@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    <link rel="manifest" href="/manifest.json"/>
+
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="icon" type="image/png" href="img/48.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="img/96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="img/128.png" sizes="128x128">
+    <link rel="icon" type="image/png" href="img/256.png" sizes="256x256">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -14,7 +21,11 @@
 </head>
 <body>
     <header>
-        <h1><a href="/">{{ config('app.name', 'Laravel') }}</a></h1>
+        <h1>
+            <a href="@if (url()->current() == url(route('welcome')))/@else{{route('shootings.gallery')}}@endif">
+                {{ config('app.name', 'Laravel') }}
+            </a>
+        </h1>
         <h2>@yield('subtitle', 'Fetish photography')</h2>
         @yield('subsubtitle')
     </header>
