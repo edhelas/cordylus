@@ -47,9 +47,10 @@ class ShootingController extends Controller
             'name' => 'string|required',
             'date' => 'date|required',
             'slug' => 'alpha_dash|required',
+            'location' => 'string'
         ]);
 
-        Shooting::create($request->only(['name', 'slug', 'date']));
+        Shooting::create($request->only(['name', 'slug', 'date', 'location']));
 
         return redirect()->route('shootings.index');
     }
@@ -93,9 +94,10 @@ class ShootingController extends Controller
             'name' => 'string|required',
             'date' => 'date|required',
             'slug' => 'alpha_dash|required',
+            'location' => 'string'
         ]);
 
-        $shooting->fill($request->only(['name', 'slug', 'date']));
+        $shooting->fill($request->only(['name', 'slug', 'date', 'location']));
         $shooting->save();
 
         return redirect()->route('shootings.index');

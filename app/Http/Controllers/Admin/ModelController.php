@@ -43,7 +43,7 @@ class ModelController extends Controller
     {
         $request->validate([
             'name' => 'string|required',
-            'instagram' => 'string',
+            'instagram' => 'alpha_dash',
             'slug' => 'alpha_dash|required',
             'website' => 'url'
         ]);
@@ -90,7 +90,7 @@ class ModelController extends Controller
 
         $request->validate([
             'name' => 'string|required',
-            'instagram' => 'string',
+            'instagram' => 'alpha_dash',
             'slug' => 'alpha_dash|required',
             'website' => 'nullable|url'
         ]);

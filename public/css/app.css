@@ -31,7 +31,7 @@ body {
 }
 
 header {
-    padding: 1rem 0;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -79,6 +79,7 @@ ul.gallery li {
     padding-bottom: 0;
     box-sizing: border-box;
     position: relative;
+    min-height: 20rem;
 }
 
 ul.gallery li.active:hover {
@@ -122,7 +123,7 @@ ul.gallery li div.label span {
 }
 
 @media screen and (max-width: 800px) {
-    ul.gallery li {
+    ul.gallery li:not(.large) {
         flex: 0 1 100%;
     }
 }

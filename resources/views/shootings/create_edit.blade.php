@@ -27,6 +27,11 @@
         </div>
 
         <div class="form-group row">
+                {!! Form::label('location', 'Location') !!}
+                {!! Form::text('location', $shooting->location, ['class' => 'form-control']); !!}
+        </div>
+
+        <div class="form-group row">
             {!! Form::label('date', 'Shooting date') !!}
             {!! Form::date('date', $shooting->date, ['class' => 'form-control', 'required']); !!}
         </div>

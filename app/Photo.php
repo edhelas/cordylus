@@ -16,9 +16,9 @@ class Photo extends Model
         return $this->hasOne('App\Shooting');
     }
 
-    public function path(string $size)
+    public function path(string $size, string $format = 'jpg')
     {
-        return $this->sizes[$size].'_'.$this->path;
+        return $this->getHash($this->sizes[$size].'_'.$this->path).'.'.$format;
     }
 
     public function createThumbnails()
@@ -31,7 +31,8 @@ class Photo extends Model
     public function deleteThumbnails()
     {
         foreach($this->sizes as $key => $size) {
-            File::delete(\storage_path('app/public/').$size.'_'.$this->path);
+            File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.jpg');
+            File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.webp');
         }
 
         File::delete(\storage_path('app/public/').$this->path);
@@ -44,6 +45,12 @@ class Photo extends Model
         $thumb = Image::make($path.$this->path)->resize($size, $size, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $thumb->save($path.$size.'_'.$this->path, 80);
+        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.jpg', 80);
+        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.webp', 80);
+    }
+
+    private function getHash($filePath)
+    {
+        return hash('sha256', $filePath);
     }
 }
