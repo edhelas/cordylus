@@ -39,5 +39,10 @@
                 <img src="img/etsy.svg">Etsy
             </a>
         </li>
+        <li>
+            <a href="https://ko-fi.com/shinyelensil">
+                <img src="img/kofi.svg">Support us on Ko-fi!
+            </a>
+        </li>
     </ul>
 @endsection
