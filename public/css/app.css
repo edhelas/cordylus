@@ -99,7 +99,6 @@ ul.gallery li {
     flex: 0 1 33.33%;
     display: inline-block;
     padding: 0.75rem;
-    padding-bottom: 0;
     box-sizing: border-box;
     position: relative;
     min-height: 20rem;
