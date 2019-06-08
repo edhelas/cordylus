@@ -57,7 +57,7 @@ h3 {
 }
 
 footer {
-    padding: 3rem 1rem;
+    padding: 1rem;
     text-align: center;
     font-size: 1.1rem;
 }
@@ -65,10 +65,10 @@ footer {
 p.warning {
     text-align: center;
     font-size: 1.2rem;
-    padding: 1rem;
     line-height: 1.7rem;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .grid {
@@ -160,7 +160,7 @@ ul.gallery li img {
 
 /* Welcome logo */
 ul.logo {
-    margin: 0 auto;
+    margin: 2rem;
     font-size: 1.75rem;
     text-align: center;
     padding: 0 1rem;
@@ -172,8 +172,8 @@ ul.logo.second {
 
 ul.logo li {
     display: inline-block;
-    margin-top: 2rem;
-    margin-right: 1rem;
+    line-height: 3rem;
+    margin: 0 1rem;
 }
 
 ul.logo li img {
