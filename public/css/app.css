@@ -32,12 +32,13 @@ body {
 
 header {
     padding: 1rem;
+    padding-bottom: 0.5rem;
     text-align: center;
 }
 
 header h1 {
     font-size: 3rem;
-    line-height: 4rem;
+    line-height: 3.5rem;
 }
 
 header h1 a:link,
@@ -64,7 +65,11 @@ footer {
 
 p.warning {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    line-height: 1.7rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .grid {
@@ -91,17 +96,16 @@ ul.gallery {
     display: flex;
     flex-flow: row wrap;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 ul.gallery li {
-    flex: 0 1 33.33%;
+    flex: 0 1 calc(33.33% - 0.5rem);
     display: inline-block;
-    padding: 0.75rem;
-    box-sizing: border-box;
     position: relative;
     min-height: 20rem;
+    padding-bottom: 0.5rem;
 }
 
 ul.gallery li.active:hover {
