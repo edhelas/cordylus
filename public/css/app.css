@@ -153,7 +153,7 @@ ul.gallery li div.label span {
     }
 }
 
-ul.gallery li img {
+ul.gallery li picture {
     width: 100%;
     box-shadow: black 0 0 2rem;
 }
@@ -191,7 +191,7 @@ ul.logo.second li img {
 div.info {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #d6776f;
+    background-color: #0485d1;
     font-size: 1.2rem;
     line-height: 1.4rem;
     padding: 1rem;
@@ -203,4 +203,64 @@ div.info .comment {
     border-top: 1px solid white;
     margin-top: 1rem;
     padding-top: 1rem;
+}
+
+/* Opinion */
+form.opinion {
+    font-size: 1.3rem;
+    max-width: 550px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    top: -1.5rem;
+    position: relative;
+    box-shadow: black 0 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+form.opinion span.num {
+    float: left;
+}
+
+form.opinion input[type=checkbox] {
+    width: 0;
+    height: 0;
+    display: block;
+}
+
+form.opinion input[type=checkbox] + label {
+    background-color: red;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+}
+
+form.opinion input[type=checkbox] + label:after {
+    content: "✗";
+}
+
+form.opinion input[type=checkbox] + label:hover {
+    cursor: pointer;
+}
+
+form.opinion input[type=checkbox]:checked + label {
+    background-color: green;
+}
+
+form.opinion input[type=checkbox]:checked + label:after {
+    content: "✓";
+}
+
+form.opinion textarea {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0.5rem 0;
+}
+
+form.opinion input[type=submit] {
+    padding: 0.1rem 0.5rem;
+    width: 100%;
 }

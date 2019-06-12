@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('subtitle'){{$shooting->name}}@endsection
+@section('subtitle'){{$shooting->name}} [Pre-Publication]@endsection
 
 @section('subsubtitle')
 <h3>
@@ -14,8 +14,8 @@
 <h3>
 
 <div class="info">
-    <p>Hello {{$model->name}}.<br /> Here are the selected pictures. They are not published yet.</p>
-    <p>Please validate, or not, and comment the pictures that you want to publish.</p>
+    <p>Hello {{$model->name}}. Here are the selected pictures waiting for your approval.</p>
+    <p>You can also add a comment if you have one.</p>
 
     @if ($shooting->comment)
         <p class="comment">Photograph comment</p>
@@ -26,13 +26,33 @@
 
 @section('content')
     <ul class="gallery">
-        @foreach ($shooting->photos as $photo)
+        @foreach ($shooting->photos as $key => $photo)
             <li class="large">
-                <picture>
-                    <source srcset="{{asset('storage/'.$photo->path('xl', 'webp'))}}" type="image/webp">
-                    <source srcset="{{asset('storage/'.$photo->path('xl'))}}" type="image/jpeg">
-                    <img src="{{asset('storage/'.$photo->path('xl'))}}">
-                </picture>
+                @include('partials.picture', ['picture' => $photo])
+
+                {!! Form::open(['route' => ['models.photos.create', $hash], 'class' => 'opinion', 'id' => $photo->id]) !!}
+                    <span class="num">n°{{$key+1}}</span>
+                    {!! Form::checkbox('validated', null, $photo->model($model->id)
+                        ? $photo->model($model->id)->pivot->validated
+                        : null, ['id' => 'validated_'.$photo->id]); !!}
+
+                    {{ $model->name }} {!! Form::label('validated_'.$photo->id, ' ') !!}
+
+                    @foreach($photo->models()->where('id', '!=', $model->id)->get() as $m)
+                        - {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
+                    @endforeach
+
+                    {!! Form::hidden('photo_id', $photo->id) !!}
+
+                    <div>
+                        {!! Form::textarea('comment', $photo->model($model->id)
+                            ? $photo->model($model->id)->pivot->comment
+                            : '', ['rows' => 2, 'placeholder' => 'Add a comment if you have one']); !!}
+                    </div>
+                    <div>
+                        {!! Form::submit('Save', ['class' => '']); !!}
+                    </div>
+                {!! Form::close() !!}
             </li>
         @endforeach
     </ul>

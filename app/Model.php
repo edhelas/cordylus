@@ -12,4 +12,9 @@ class Model extends EloquentModel
     {
         return $this->belongsToMany('App\Shooting');
     }
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Photo')->withPivot('validated', 'comment')->withTimestamps();
+    }
 }

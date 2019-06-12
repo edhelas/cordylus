@@ -19,6 +19,7 @@ class ShootingModelController extends Controller
         if (!$modelShooting) abort(404);
 
         return view('models.hash', [
+            'hash' => $hash,
             'model' => Model::find($modelShooting->model_id),
             'shooting' => Shooting::find($modelShooting->shooting_id)
         ]);

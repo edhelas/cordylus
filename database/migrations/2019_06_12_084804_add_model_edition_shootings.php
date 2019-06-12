@@ -28,19 +28,24 @@ class AddModelEditionShootings extends Migration
             $table->string('hash')->nullable(false)->change();
         });
 
+        Schema::table('photos', function (Blueprint $table) {
+            $table->boolean('published')->default(false);
+        });
+
         Schema::table('shootings', function (Blueprint $table) {
             $table->boolean('published')->default(false);
             $table->text('comment')->nullable();
         });
 
         Schema::create('model_photo', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('instagram')->nullable();
-            $table->string('website')->nullable();
+            $table->unsignedBigInteger('photo_id');
+            $table->unsignedBigInteger('model_id');
+            $table->foreign('photo_id')->references('id')->on('photos')->onDelete('cascade');
+            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');
+            $table->boolean('validated')->default(false);
+            $table->string('comment')->nullable();
+            $table->unique(['photo_id', 'model_id']);
             $table->timestamps();
-            $table->unique('slug');
         });
     }
 
@@ -54,6 +59,10 @@ class AddModelEditionShootings extends Migration
         Schema::table('shootings', function (Blueprint $table) {
             $table->dropColumn('published');
             $table->dropColumn('comment');
+        });
+
+        Schema::table('photos', function (Blueprint $table) {
+            $table->dropColumn('published');
         });
 
         Schema::table('model_shooting', function (Blueprint $table) {

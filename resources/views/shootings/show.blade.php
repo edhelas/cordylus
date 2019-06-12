@@ -18,11 +18,7 @@
     <ul class="gallery">
         @foreach ($shooting->photos as $photo)
             <li class="large">
-                <picture>
-                    <source srcset="{{asset('storage/'.$photo->path('xl', 'webp'))}}" type="image/webp">
-                    <source srcset="{{asset('storage/'.$photo->path('xl'))}}" type="image/jpeg">
-                    <img src="{{asset('storage/'.$photo->path('xl'))}}">
-                </picture>
+                @include('partials.picture', ['picture' => $photo])
             </li>
         @endforeach
     </ul>

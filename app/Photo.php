@@ -21,6 +21,16 @@ class Photo extends Model
         return $this->getHash($this->sizes[$size].'_'.$this->path).'.'.$format;
     }
 
+    public function models()
+    {
+        return $this->belongsToMany('App\Model')->withPivot('validated', 'comment')->withTimestamps();
+    }
+
+    public function model($modelId)
+    {
+        return $this->models()->find($modelId);
+    }
+
     public function createThumbnails()
     {
         foreach($this->sizes as $key => $size) {

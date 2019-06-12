@@ -64,9 +64,13 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="text-center">
-                        <img src="{{asset('storage/'.$photo->path('m'))}}" style="max-width: 100%"/>
+                            <img src="{{asset('storage/'.$photo->path('m'))}}" style="max-width: 100%"/>
                         </p>
-
+                        <p class="text-center  mb-1">
+                            @foreach($photo->models as $m)
+                                {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
+                            @endforeach
+                        </p>
                         <p class="text-center mb-0">
                             <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
                             @if ($shooting->primary_photo_id == $photo->id)
@@ -98,18 +102,18 @@
 
     <div class="row">
         @foreach ($shooting->models as $model)
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
-                    <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm float-right">X</a>
-                    <h5 class="card-title">{{$model->name}}</h5>
-                    <p class="card-text form-group">
-                        <a href="{{route('shooting.model.show.hash', $model->pivot->hash)}}">{{$model->pivot->hash}}</a>
-                        <input type="text" readonly value="{{$model->pivot->hash}}" class="form-control form-control-sm"/>
-                    </p>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm float-right">X</a>
+                        <h5 class="card-title">{{$model->name}}</h5>
+                        <p class="card-text form-group">
+                            <a href="{{route('shooting.model.show.hash', $model->pivot->hash)}}">{{$model->pivot->hash}}</a>
+                            <input type="text" readonly value="{{$model->pivot->hash}}" class="form-control form-control-sm"/>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         @endforeach
 
         <div class="col-sm-3">
