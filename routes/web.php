@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('g/', 'ShootingController@index')->name('shootings.gallery');
 Route::get('m/{slug}', 'ModelController@show')->name('models.show.slug');
+Route::get('h/{hash}', 'Admin\ShootingModelController@show')->name('shooting.model.show.hash');
 Route::get('s/{slug}', 'ShootingController@show')->name('shootings.show.slug');
 
 Auth::routes();

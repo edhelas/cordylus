@@ -10,6 +10,20 @@ use App\Shooting;
 
 class ShootingModelController extends Controller
 {
+    public function show(string $hash)
+    {
+        $modelShooting = \DB::table('model_shooting')
+                           ->where('hash', $hash)
+                           ->first();
+
+        if (!$modelShooting) abort(404);
+
+        return view('models.hash', [
+            'model' => Model::find($modelShooting->model_id),
+            'shooting' => Shooting::find($modelShooting->shooting_id)
+        ]);
+    }
+
     public function create(Shooting $shooting, Request $request)
     {
         $request->validate([

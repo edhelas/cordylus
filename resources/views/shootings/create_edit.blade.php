@@ -104,6 +104,7 @@
                     <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm float-right">X</a>
                     <h5 class="card-title">{{$model->name}}</h5>
                     <p class="card-text form-group">
+                        <a href="{{route('shooting.model.show.hash', $model->pivot->hash)}}">{{$model->pivot->hash}}</a>
                         <input type="text" readonly value="{{$model->pivot->hash}}" class="form-control form-control-sm"/>
                     </p>
                 </div>

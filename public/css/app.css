@@ -186,3 +186,21 @@ ul.logo li img {
 ul.logo.second li img {
     width: 1.8rem;
 }
+
+/* Info */
+div.info {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #d6776f;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+div.info .comment {
+    font-weight: bold;
+    border-top: 1px solid white;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
