@@ -59,7 +59,7 @@ class ShootingPhotoController extends Controller
 
         $photo->createThumbnails();
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $request->input('shooting_id'));
     }
 
     /**
@@ -90,7 +90,7 @@ class ShootingPhotoController extends Controller
         $shooting->primary_photo_id = $photoId;
         $shooting->save();
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $shooting->id);
     }
 
     /**
@@ -109,6 +109,6 @@ class ShootingPhotoController extends Controller
             $shooting->save();
         }
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $shooting->id);
     }
 }

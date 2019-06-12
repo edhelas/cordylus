@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shooting extends Model
 {
     protected $dates = ['date'];
-    protected $fillable = ['name', 'date', 'slug', 'primary_photo_id', 'location'];
+    protected $fillable = ['name', 'date', 'slug', 'primary_photo_id', 'location', 'comment', 'published'];
 
     public function photos()
     {
@@ -16,7 +16,12 @@ class Shooting extends Model
 
     public function models()
     {
-        return $this->belongsToMany('App\Model');
+        return $this->belongsToMany('App\Model')->withPivot('hash');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
     }
 
     public function getWithAttribute()

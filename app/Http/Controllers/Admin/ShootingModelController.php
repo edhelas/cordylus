@@ -16,15 +16,15 @@ class ShootingModelController extends Controller
             'model_id' => 'exists:models,id'
         ]);
 
-        $shooting->models()->attach($request->input('model_id'));
+        $shooting->models()->attach($request->input('model_id'), ['hash' => str_random(8)]);
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $shooting->id);
     }
 
     public function destroy(Shooting $shooting, $modelId)
     {
         $shooting->models()->detach($modelId);
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $shooting->id);
     }
 }

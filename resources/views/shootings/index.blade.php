@@ -21,35 +21,12 @@
                 <a href="{{ route('shootings.edit', $shooting) }}" class="btn btn-warning btn-sm">Edit</a>
             </th>
             <td>
-                @foreach ($shooting->models as $model)
-                    {{$model->name}}
-                    <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm">x</a><br />
-                @endforeach
-                {!! Form::open(['route' => ['shootings.models.add', $shooting->id]]) !!}
-
-                    {!! Form::select(
-                        'model_id',
-                        $models->whereNotIn('id', $shooting->models->pluck('id'))
-                               ->pluck('name', 'id'),
-                        null,
-                        ['class' => 'form-control form-control-sm']);
-                    !!}
-                    {!! Form::submit('+', ['class' => 'btn btn-success btn-sm']); !!}
-
-                {!! Form::close() !!}
+                {{$shooting->models->implode('name', ', ')}}
             </td>
             <td>
                 @foreach ($shooting->photos as $photo)
                     <img src="{{asset('storage/'.$photo->path('s'))}}"/>
-                    <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
-                        @if ($shooting->primary_photo_id == $photo->id)
-                            disabled
-                        @endif
-                    ">D
-                    </a>
-                    <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" class="btn btn-danger btn-sm">x</a>
                 @endforeach
-                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm">Add</a>
             </td>
         </tr>
         @endforeach

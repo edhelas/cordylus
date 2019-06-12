@@ -18,8 +18,7 @@ class ShootingController extends Controller
     public function index()
     {
         return view('shootings.index', [
-            'shootings' => Shooting::orderBy('date', 'desc')->get(),
-            'models' => Model::all()
+            'shootings' => Shooting::orderBy('date', 'desc')->get()
         ]);
     }
 
@@ -31,7 +30,8 @@ class ShootingController extends Controller
     public function create()
     {
         return view('shootings.create_edit', [
-            'shooting' => new Shooting
+            'shooting' => new Shooting,
+            'models' => Model::all()
         ]);
     }
 
@@ -47,10 +47,10 @@ class ShootingController extends Controller
             'name' => 'string|required',
             'date' => 'date|required',
             'slug' => 'alpha_dash|required',
-            'location' => 'string'
+            'published' => 'boolean'
         ]);
 
-        Shooting::create($request->only(['name', 'slug', 'date', 'location']));
+        Shooting::create($request->only(['name', 'slug', 'date', 'location', 'published', 'comment']));
 
         return redirect()->route('shootings.index');
     }
@@ -75,7 +75,8 @@ class ShootingController extends Controller
     public function edit(Shooting $shooting)
     {
         return view('shootings.create_edit', [
-            'shooting' => $shooting
+            'shooting' => $shooting,
+            'models' => Model::all()
         ]);
     }
 
@@ -93,14 +94,14 @@ class ShootingController extends Controller
         $request->validate([
             'name' => 'string|required',
             'date' => 'date|required',
-            'slug' => 'alpha_dash|required',
-            'location' => 'string'
+            'slug' => 'alpha_dash|required'
         ]);
 
-        $shooting->fill($request->only(['name', 'slug', 'date', 'location']));
+        $shooting->fill($request->only(['name', 'slug', 'date', 'location', 'comment']));
+        $shooting->published = $request->input('published', false);
         $shooting->save();
 
-        return redirect()->route('shootings.index');
+        return redirect()->route('shootings.edit', $id);
     }
 
     /**

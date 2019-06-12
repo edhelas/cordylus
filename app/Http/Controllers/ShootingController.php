@@ -17,13 +17,13 @@ class ShootingController extends Controller
     public function index()
     {
         return view('shootings.gallery', [
-            'shootings' => Shooting::orderBy('date', 'desc')->get()
+            'shootings' => Shooting::orderBy('date', 'desc')->published()->get()
         ]);
     }
 
     public function show($slug)
     {
-        $shooting = Shooting::where('slug', $slug)->firstOrFail();
+        $shooting = Shooting::where('slug', $slug)->published()->firstOrFail();
 
         return view('shootings.show', [
             'shooting' => $shooting
