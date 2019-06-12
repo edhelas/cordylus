@@ -17,7 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('shootings', 'Admin\ShootingController');
     Route::resource('models', 'Admin\ModelController');
     Route::resource('shootings.photos', 'Admin\ShootingPhotoController');
-    Route::get('shootings/{shooting}/photos/{model}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
+    Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
+    Route::get('shootings/{shooting}/photos/{photo}/publish', 'Admin\ShootingPhotoController@publish')->name('shootings.photos.publish');
+    Route::get('shootings/{shooting}/photos/{photo}/unpublish', 'Admin\ShootingPhotoController@unpublish')->name('shootings.photos.unpublish');
     Route::get('shootings/{shooting}/photos/{photo}/remove', 'Admin\ShootingPhotoController@destroy')->name('shootings.photos.remove');
     Route::post('shootings/{shooting}/models/add', 'Admin\ShootingModelController@create')->name('shootings.models.add');
     Route::get('shootings/{shooting}/models/{model}/remove', 'Admin\ShootingModelController@destroy')->name('shootings.models.remove');

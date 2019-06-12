@@ -16,7 +16,7 @@
 
 @section('content')
     <ul class="gallery">
-        @foreach ($shooting->photos as $photo)
+        @foreach ($shooting->photos()->where('published', true)->get() as $photo)
             <li class="large">
                 @include('partials.picture', ['picture' => $photo])
             </li>

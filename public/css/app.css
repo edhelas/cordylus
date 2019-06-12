@@ -116,7 +116,7 @@ ul.gallery li.large {
     text-align: center;
 }
 
-ul.gallery li.large img {
+ul.gallery li img {
     max-height: 100vh;
     max-width: 100%;
     width: auto;

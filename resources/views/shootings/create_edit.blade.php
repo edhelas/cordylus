@@ -69,9 +69,16 @@
                         <p class="text-center  mb-1">
                             @foreach($photo->models as $m)
                                 {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
+                                @if ($m->pivot->comment)
+                                    ({{ $m->pivot->comment }})
+                                @endif
                             @endforeach
                         </p>
                         <p class="text-center mb-0">
+                            <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
+                               class="btn {{ $photo->published ? 'btn-success' : 'btn-warning' }} btn-sm">
+                                {{ $photo->published ? '✓' : '✗' }}
+                            </a>
                             <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
                             @if ($shooting->primary_photo_id == $photo->id)
                                 disabled

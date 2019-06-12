@@ -93,6 +93,22 @@ class ShootingPhotoController extends Controller
         return redirect()->route('shootings.edit', $shooting->id);
     }
 
+    public function publish(Shooting $shooting, Photo $photo)
+    {
+        $photo->published = true;
+        $photo->save();
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
+    public function unpublish(Shooting $shooting, Photo $photo)
+    {
+        $photo->published = false;
+        $photo->save();
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
