@@ -12,6 +12,9 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         {{$shooting->name}}
+                        @if ($shooting->published)
+                            <span class="badge badge-success">Published</span>
+                        @endif
                         <a href="{{ route('shootings.edit', $shooting) }}" class="btn btn-info float-right">Edit</a>
                     </h5>
                     <p class="card-text">with {{$shooting->models->implode('name', ', ')}}

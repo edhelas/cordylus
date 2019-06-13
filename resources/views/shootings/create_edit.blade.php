@@ -2,7 +2,11 @@
 
 @section('content')
     @if($shooting->id)
-        <h2>Edit </h2>
+        <h2>Edit
+            @if ($shooting->published)
+                <span class="badge badge-success">Published</span>
+            @endif
+        </h2>
     @else
         <h2>Create</h2>
     @endif
@@ -46,7 +50,7 @@
         {!! Form::submit($shooting->id ? 'Save' :'Create', ['class' => 'btn btn-primary float-right']); !!}
         <div class="form-group col-md-4">
                 <div class="form-check">
-                        {!! Form::checkbox('published', null, $shooting->published, ['class' => 'form-check-input']); !!}
+                        {!! Form::checkbox('published', null, $shooting->published, ['class' => 'form-check-input', 'id' =>'published']); !!}
                         {!! Form::label('published', 'Published', ['class' => 'form-check-label']) !!}
                 </div>
             </div>
