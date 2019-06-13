@@ -220,6 +220,13 @@ form.opinion {
     margin-bottom: 1rem;
 }
 
+form.opinion.published {
+    pointer-events: none;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.3;
+}
+
 form.opinion span.num {
     float: left;
 }

@@ -30,7 +30,11 @@
             <li class="large">
                 @include('partials.picture', ['picture' => $photo])
 
-                {!! Form::open(['route' => ['models.photos.create', $hash], 'class' => 'opinion', 'id' => $photo->id]) !!}
+                {!! Form::open([
+                        'route' => ['models.photos.create', $hash],
+                        'class' => 'opinion '.($photo->published ? 'published' : ''),
+                        'id' => $photo->id
+                ]) !!}
                     <span class="num">n°{{$key+1}}</span>
                     {!! Form::checkbox('validated', null, $photo->model($model->id)
                         ? $photo->model($model->id)->pivot->validated

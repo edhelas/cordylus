@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model;
 use App\Shooting;
+use App\Photo;
 
 class ModelPhotoController extends Controller
 {
@@ -17,6 +18,10 @@ class ModelPhotoController extends Controller
                            ->first();
 
         if (!$modelShooting) abort(404);
+
+        $photo = Photo::find($request->input('photo_id'));
+
+        if ($photo->published) abort(403);
 
         $model = Model::find($modelShooting->model_id);
         $model->photos()->detach($request->input('photo_id'));
