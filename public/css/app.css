@@ -234,7 +234,8 @@ form.opinion span.num {
 form.opinion input[type=checkbox] {
     width: 0;
     height: 0;
-    display: block;
+    display: inline-block;
+    opacity: 0;
 }
 
 form.opinion input[type=checkbox] + label {
