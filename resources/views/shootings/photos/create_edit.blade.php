@@ -9,7 +9,7 @@
 
     {!! Form::model($photo, [
         'action' => $photo->id
-            ? ['Admin\ShootingPhotoController@update', [$photo->shooting_id, $photo->id]]
+            ? ['Admin\ShootingPhotoController@update', $photo->shooting_id, $photo->id]
             : ['Admin\ShootingPhotoController@store', $photo->shooting_id],
         'method' => $photo->id
             ? 'put'

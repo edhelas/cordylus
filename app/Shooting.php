@@ -37,6 +37,8 @@ class Shooting extends Model
             return $this->photos()->where('id', $this->primary_photo_id)->first();
         }
 
-        return $this->photos()->first();
+        $first = $this->photos()->first();
+
+        return $first ?? new \App\Photo;
     }
 }

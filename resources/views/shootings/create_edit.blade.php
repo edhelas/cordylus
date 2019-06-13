@@ -62,11 +62,11 @@
         @foreach ($shooting->photos as $photo)
             <div class="col-sm-3">
                 <div class="card">
+                    <a href="{{asset($photo->path('o'))}}" target="_blank">
+                        <img class="card-img-top" src="{{asset($photo->path('l'))}}" style="object-fit: cover;"/>
+                    </a>
                     <div class="card-body">
-                        <p class="text-center">
-                            <img src="{{asset('storage/'.$photo->path('m'))}}" style="max-width: 100%"/>
-                        </p>
-                        <p class="text-center  mb-1">
+                        <p class="text-center mb-1">
                             @foreach($photo->models as $m)
                                 {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
                                 @if ($m->pivot->comment)
@@ -74,19 +74,20 @@
                                 @endif
                             @endforeach
                         </p>
-                        <p class="text-center mb-0">
-                            <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
-                               class="btn {{ $photo->published ? 'btn-success' : 'btn-warning' }} btn-sm">
-                                {{ $photo->published ? '✓' : '✗' }}
-                            </a>
-                            <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
-                            @if ($shooting->primary_photo_id == $photo->id)
-                                disabled
-                            @endif
-                            ">Primary
-                            </a>
-                            <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" class="btn btn-danger btn-sm">Delete</a>
-                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
+                            class="btn {{ $photo->published ? 'btn-primary' : 'btn-secondary' }} btn-sm">
+                            {{ $photo->published ? 'Published' : 'Unpublished' }}
+                        </a>
+                        <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
+                        @if ($shooting->primary_photo_id == $photo->id)
+                            disabled
+                        @endif
+                        ">Primary
+                        </a>
+                        <a href="{{ route('shootings.photos.edit', [$shooting, $photo]) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" class="btn btn-danger btn-sm">Delete</a>
                     </div>
                 </div>
             </div>

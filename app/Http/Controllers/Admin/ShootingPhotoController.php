@@ -48,9 +48,7 @@ class ShootingPhotoController extends Controller
             'photo' => 'image|required'
         ]);
 
-        $file = $request->file('photo');
-        $name = rand(1, 999) . $file->getClientOriginalName();
-        $path = $file->storeAs('public', $name);
+        $name = $this->storeFile($request);
 
         $photo = Photo::create([
             'shooting_id' => $request->input('shooting_id'),
@@ -68,9 +66,11 @@ class ShootingPhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Shooting $shooting, Photo $photo)
     {
-        //
+        return view('shootings.photos.create_edit', [
+            'photo' => $photo
+        ]);
     }
 
     /**
@@ -80,9 +80,20 @@ class ShootingPhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Shooting $shooting, Photo $photo, Request $request)
     {
-        //
+        $request->validate([
+            'photo' => 'image|required'
+        ]);
+
+        $photo->deleteThumbnails();
+
+        $photo->path = $this->storeFile($request);
+        $photo->save();
+
+        $photo->createThumbnails();
+
+        return redirect()->route('shootings.edit', $request->input('shooting_id'));
     }
 
     public function setPrimary(Shooting $shooting, int $photoId)
@@ -126,5 +137,14 @@ class ShootingPhotoController extends Controller
         }
 
         return redirect()->route('shootings.edit', $shooting->id);
+    }
+
+    private function storeFile(Request $request): string
+    {
+        $file = $request->file('photo');
+        $name = rand(1, 999) . $file->getClientOriginalName();
+        $file->storeAs('public', $name);
+
+        return $name;
     }
 }

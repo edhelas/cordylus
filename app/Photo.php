@@ -16,9 +16,13 @@ class Photo extends Model
         return $this->hasOne('App\Shooting');
     }
 
-    public function path(string $size, string $format = 'jpg')
+    public function path(string $size = 'm', string $format = 'jpg')
     {
-        return $this->getHash($this->sizes[$size].'_'.$this->path).'.'.$format;
+        return isset($this->attributes['path'])
+            ? $size == 'o'
+                ? 'storage/'.$this->attributes['path']
+                : 'storage/'.$this->getHash($this->sizes[$size].'_'.$this->attributes['path']).'.'.$format
+            : 'img/placeholder.jpg';
     }
 
     public function models()
