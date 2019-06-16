@@ -46,7 +46,7 @@
         </li>
         <li>
             <a href="https://ko-fi.com/shinyelensil">
-                <img src="img/kofi.svg">Ko-fi!
+                <img src="img/kofi.svg">Ko-fi
             </a>
         </li>
     </ul>
