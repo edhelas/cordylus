@@ -25,6 +25,11 @@
 
     <ul class="logo second">
         <li>
+            <a href="https://www.patreon.com/kinky_lab">
+                <img src="img/patreon.svg">Get exclusive content from Patreon
+            </a>
+        </li><br />
+        <li>
             <a href="https://www.instagram.com/shinyelensil/">
                 <img src="img/instagram.svg">Instagram
             </a>
@@ -41,7 +46,7 @@
         </li>
         <li>
             <a href="https://ko-fi.com/shinyelensil">
-                <img src="img/kofi.svg">Support us on Ko-fi!
+                <img src="img/kofi.svg">Ko-fi!
             </a>
         </li>
     </ul>

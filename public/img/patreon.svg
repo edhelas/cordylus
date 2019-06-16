@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg:svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="541.4375"
+   height="541.43744"
+   id="svg3168"
+   version="1.1"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Patreon_logo.svg">
+  <script
+     id="custom-useragent-string" />
+  <svg:defs
+     id="defs3170" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.84"
+     inkscape:cx="8.794502"
+     inkscape:cy="147.0455"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-center="true"
+     inkscape:object-nodes="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <svg:metadata
+     id="metadata3173">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </svg:metadata>
+  <svg:g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-78.58618,-210.44369)">
+    <svg:path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="M 270.71875 0 C 121.2033 0 0 121.20325 0 270.71875 L 0 541.1875 L 62.84375 541.1875 L 62.84375 478.375 L 62.84375 394.625 L 62.84375 270.71875 C 62.84375 155.91869 155.91872 62.84375 270.71875 62.84375 C 385.51882 62.84375 478.59375 155.91869 478.59375 270.71875 C 478.59375 382.28992 390.67231 473.31013 280.34375 478.34375 C 245.28909 478.05679 215.40292 472.36763 202.3125 464.3125 L 202.3125 374.96875 C 221.8495 387.76039 245.21684 395.21875 270.3125 395.21875 C 338.95359 395.21875 394.59375 339.57859 394.59375 270.9375 C 394.59375 202.29641 338.95359 146.625 270.3125 146.625 C 201.67141 146.625 146.03125 202.29641 146.03125 270.9375 L 146.03125 541.1875 L 259.375 541.1875 C 263.1358 541.3425 266.91985 541.4375 270.71875 541.4375 C 420.23425 541.4375 541.4375 420.23425 541.4375 270.71875 C 541.4375 121.20325 420.23425 0 270.71875 0 z M 262 478.375 L 279.875 478.375 C 276.83696 478.50675 273.78924 478.59375 270.71875 478.59375 C 267.80191 478.59375 264.8876 478.4941 262 478.375 z "
+       transform="translate(78.58618,210.44369)"
+       id="path3204" />
+  </svg:g>
+</svg:svg>
