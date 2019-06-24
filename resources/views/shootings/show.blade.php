@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('subtitle'){{$shooting->name}}@endsection
+@section('subtitle'){{$shooting->name}}
+
+@if($exclusive)
++ Exclusive content
+@endif
+@endsection
 
 @section('subsubtitle')
 <h3>
@@ -18,7 +23,11 @@
     <ul class="gallery">
         @foreach ($shooting->photos()->where('published', true)->get() as $photo)
             <li class="large">
-                @include('partials.picture', ['picture' => $photo])
+                @if ($photo->exclusive && !$exclusive)
+                    @include('partials.picture', ['picture' => $photo, 'caption' => true])
+                @else
+                    @include('partials.picture', ['picture' => $photo, 'caption' => false])
+                @endif
             </li>
         @endforeach
     </ul>

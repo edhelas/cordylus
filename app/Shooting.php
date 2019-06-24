@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shooting extends Model
 {
     protected $dates = ['date'];
-    protected $fillable = ['name', 'date', 'slug', 'primary_photo_id', 'location', 'comment', 'published'];
+    protected $fillable = ['name', 'date', 'slug', 'primary_photo_id', 'location', 'comment', 'published', 'exclusive_hash'];
 
     public function photos()
     {

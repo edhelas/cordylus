@@ -20,6 +20,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
     Route::get('shootings/{shooting}/photos/{photo}/publish', 'Admin\ShootingPhotoController@publish')->name('shootings.photos.publish');
     Route::get('shootings/{shooting}/photos/{photo}/unpublish', 'Admin\ShootingPhotoController@unpublish')->name('shootings.photos.unpublish');
+
+    Route::get('shootings/{shooting}/photos/{photo}/exclusive', 'Admin\ShootingPhotoController@setExclusive')->name('shootings.photos.exclusive');
+    Route::get('shootings/{shooting}/photos/{photo}/unexclusive', 'Admin\ShootingPhotoController@unsetExclusive')->name('shootings.photos.unexclusive');
+
     Route::get('shootings/{shooting}/photos/{photo}/remove', 'Admin\ShootingPhotoController@destroy')->name('shootings.photos.remove');
     Route::post('shootings/{shooting}/models/add', 'Admin\ShootingModelController@create')->name('shootings.models.add');
     Route::get('shootings/{shooting}/models/{model}/remove', 'Admin\ShootingModelController@destroy')->name('shootings.models.remove');
@@ -27,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('g/', 'ShootingController@index')->name('shootings.gallery');
 Route::get('h/{hash}', 'Admin\ShootingModelController@show')->name('shooting.model.show.hash');
-Route::get('s/{slug}', 'ShootingController@show')->name('shootings.show.slug');
+Route::get('s/{slug}/{hash?}', 'ShootingController@show')->name('shootings.show.slug');
 
 # Model
 Route::get('m/{slug}', 'ModelController@show')->name('models.show.slug');

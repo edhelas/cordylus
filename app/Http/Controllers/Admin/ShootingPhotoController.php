@@ -120,6 +120,23 @@ class ShootingPhotoController extends Controller
         return redirect()->route('shootings.edit', $shooting->id);
     }
 
+    public function setExclusive(Shooting $shooting, Photo $photo)
+    {
+        $photo->exclusive = true;
+        $photo->save();
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
+    public function unsetExclusive(Shooting $shooting, Photo $photo)
+    {
+        $photo->exclusive = false;
+        $photo->save();
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

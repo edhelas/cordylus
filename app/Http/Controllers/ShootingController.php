@@ -21,12 +21,13 @@ class ShootingController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(string $slug, string $exclusiveHash = null)
     {
         $shooting = Shooting::where('slug', $slug)->published()->firstOrFail();
 
         return view('shootings.show', [
-            'shooting' => $shooting
+            'shooting' => $shooting,
+            'exclusive' => ($shooting->exclusive_hash == $exclusiveHash)
         ]);
     }
 }

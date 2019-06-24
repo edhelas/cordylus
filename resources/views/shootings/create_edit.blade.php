@@ -1,15 +1,23 @@
 @extends('layouts.admin')
 
 @section('content')
-    @if($shooting->id)
-        <h2>Edit
-            @if ($shooting->published)
-                <span class="badge badge-success">Published</span>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @if($shooting->id)
+                <h2>Edit
+                    @if ($shooting->published)
+                        <span class="badge badge-success">Published</span>
+                    @endif
+                </h2>
+            @else
+                <h2>Create</h2>
             @endif
-        </h2>
-    @else
-        <h2>Create</h2>
-    @endif
+        </div>
+        <div class="form-group col-md-6">
+            <label>Exclusive link</label>
+            <input type="text" readonly value="{{route('shootings.show.slug', [$shooting->slug, $shooting->exclusive_hash])}}" class="form-control form-control-sm"/>
+        </div>
+    </div>
 
     <div class="clearfix pb-1">
         {!! Form::model($shooting, [
@@ -69,6 +77,7 @@
                     <a href="{{asset($photo->path('o'))}}" target="_blank">
                         <img class="card-img-top" src="{{asset($photo->path('l'))}}" style="object-fit: cover;"/>
                     </a>
+                    @if($photo->models->count() > 0)
                     <div class="card-body">
                         <p class="text-center mb-1">
                             @foreach($photo->models as $m)
@@ -79,11 +88,16 @@
                             @endforeach
                         </p>
                     </div>
+                    @endif
                     <div class="card-footer">
                         <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
                             class="btn {{ $photo->published ? 'btn-primary' : 'btn-secondary' }} btn-sm">
                             {{ $photo->published ? 'Published' : 'Unpublished' }}
                         </a>
+                        <a href="{{ route($photo->exclusive ? 'shootings.photos.unexclusive' : 'shootings.photos.exclusive', [$shooting, $photo]) }}"
+                                class="btn {{ $photo->exclusive ? 'btn-info' : 'btn-secondary' }} btn-sm">
+                                {{ $photo->exclusive ? 'Exclusive' : 'Not Exclusive' }}
+                            </a>
                         <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
                         @if ($shooting->primary_photo_id == $photo->id)
                             disabled
@@ -121,7 +135,7 @@
                         <h5 class="card-title">{{$model->name}}</h5>
                         <p class="card-text form-group">
                             <a href="{{route('shooting.model.show.hash', $model->pivot->hash)}}">{{$model->pivot->hash}}</a>
-                            <input type="text" readonly value="{{$model->pivot->hash}}" class="form-control form-control-sm"/>
+                            <input type="text" readonly value="{{route('shooting.model.show.hash', $model->pivot->hash)}}" class="form-control form-control-sm"/>
                         </p>
                     </div>
                 </div>
