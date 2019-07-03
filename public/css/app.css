@@ -62,6 +62,34 @@ footer {
     font-size: 1.1rem;
 }
 
+/* Article */
+
+article {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+article h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+article ul li {
+    list-style-type: circle;
+    margin-left: 1rem;
+}
+
+article p,
+article li {
+    font-size: 1.25rem;
+}
+
+article p,
+article ul {
+    margin: 1rem 0;
+}
+
 p.warning {
     text-align: center;
     font-size: 1.2rem;

@@ -16,6 +16,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <meta name="description" content="Fetish Photography" />
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/utils.js') }}" defer></script>
 </head>
@@ -32,6 +34,6 @@
     <main>
         @yield('content')
     </main>
-    <footer> Since 2018 | All models appearing on this website are 18 years of age or older </footer>
+    <footer>Since 2018 | <a href="{{route('about')}}">About Us</a> | All models appearing on this website are 18 years of age or older </footer>
 </body>
 </html>
