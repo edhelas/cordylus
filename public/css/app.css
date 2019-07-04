@@ -215,11 +215,19 @@ ul.gallery li picture.caption {
     overflow: hidden;
 }
 
+ul.gallery li video + .caption {
+    top: 2rem;
+}
+
 ul.gallery li picture.caption:after {
     content: "Exclusive picture, visit our Patreon to get access to it";
+    bottom: 50vh;
+}
+
+ul.gallery li video + .caption,
+ul.gallery li picture.caption:after {
     position: absolute;
     font-size: 1.25rem;
-    bottom: 50vh;
     left: 0;
     width: 100%;
     padding: 1rem;

@@ -1,4 +1,4 @@
-<video class="@if(!empty($caption))caption @endif"
+<video
     controls poster="{{asset($video->cover)}}">
     @if(!empty($caption) || $video->{'720_h264'} == null || $video->{'720_webm'} == null)
         <source src="{{$video->preview_h264}}" type="video/webm">
@@ -9,3 +9,7 @@
     @endif
     Video formats not supported
 </video>
+
+@if(!empty($caption))
+    <div class="caption">Preview video, full version available on our Patreon</div>
+@endif
