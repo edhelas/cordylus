@@ -16,6 +16,8 @@ Route::get('/', 'ShootingController@welcome')->name('welcome');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('shootings', 'Admin\ShootingController');
     Route::resource('models', 'Admin\ModelController');
+
+    // Photos
     Route::resource('shootings.photos', 'Admin\ShootingPhotoController');
     Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
     Route::get('shootings/{shooting}/photos/{photo}/publish', 'Admin\ShootingPhotoController@publish')->name('shootings.photos.publish');
@@ -23,9 +25,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('shootings/{shooting}/photos/{photo}/exclusive', 'Admin\ShootingPhotoController@setExclusive')->name('shootings.photos.exclusive');
     Route::get('shootings/{shooting}/photos/{photo}/unexclusive', 'Admin\ShootingPhotoController@unsetExclusive')->name('shootings.photos.unexclusive');
-
     Route::get('shootings/{shooting}/photos/{photo}/remove', 'Admin\ShootingPhotoController@destroy')->name('shootings.photos.remove');
     Route::post('shootings/{shooting}/models/add', 'Admin\ShootingModelController@create')->name('shootings.models.add');
+
+    // Videos
+    Route::resource('shootings.videos', 'Admin\ShootingVideoController');
+    Route::get('shootings/{shooting}/videos/{video}/publish', 'Admin\ShootingVideoController@publish')->name('shootings.videos.publish');
+    Route::get('shootings/{shooting}/videos/{video}/unpublish', 'Admin\ShootingVideoController@unpublish')->name('shootings.videos.unpublish');
+
+    Route::get('shootings/{shooting}/videos/{video}/exclusive', 'Admin\ShootingVideoController@setExclusive')->name('shootings.videos.exclusive');
+    Route::get('shootings/{shooting}/videos/{video}/unexclusive', 'Admin\ShootingVideoController@unsetExclusive')->name('shootings.videos.unexclusive');
+
     Route::get('shootings/{shooting}/models/{model}/remove', 'Admin\ShootingModelController@destroy')->name('shootings.models.remove');
 });
 

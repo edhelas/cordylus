@@ -10,6 +10,9 @@
                     <span>with {!! $shooting->with !!}</span>
                 @endif
             </div>
+            <div class="description">
+                {{ $shooting->photos()->count() + $shooting->videos()->count()}} medias
+            </div>
         </li>
     @endforeach
 </ul>

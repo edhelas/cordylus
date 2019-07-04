@@ -9,6 +9,11 @@ class Shooting extends Model
     protected $dates = ['date'];
     protected $fillable = ['name', 'date', 'slug', 'primary_photo_id', 'location', 'comment', 'published', 'exclusive_hash'];
 
+    public function videos()
+    {
+        return $this->hasMany('App\Video')->orderBy('created_at');
+    }
+
     public function photos()
     {
         return $this->hasMany('App\Photo')->orderBy('created_at');
@@ -33,12 +38,20 @@ class Shooting extends Model
 
     public function getPrimaryAttribute()
     {
-        if ($this->primary_photo_id) {
-            return $this->photos()->where('id', $this->primary_photo_id)->first();
+        if ($this->primary_photo_id
+        && $first = $this->photos()
+            ->where('published', true)
+            ->where('id', $this->primary_photo_id)
+            ->first()) {
+            return $first;
         }
 
-        $first = $this->photos()->first();
+        $first = $this->photos()->where('published', true)->first();
 
-        return $first ?? new \App\Photo;
+        if ($first) return $first;
+
+        $placeholder = new \App\Photo;
+        $placeholder->published = true;
+        return $placeholder;
     }
 }

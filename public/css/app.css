@@ -154,6 +154,15 @@ ul.gallery li picture:not(.published):after {
     left: 0;
 }
 
+ul.gallery div.description {
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1rem 0.5rem;
+    text-shadow: black 0 0 1rem, black 0 0 0.25rem;
+}
+
 ul.gallery li div.label {
     background-color: rgba(0, 0, 0, 0.75);
     display: block;
@@ -185,8 +194,9 @@ ul.gallery li div.label span {
     }
 }
 
-ul.gallery li picture {
-    width: 100%;
+ul.gallery li picture,
+ul.gallery li video {
+    max-width: 100%;
     position: relative;
     box-shadow: black 0 0 2rem;
 }
@@ -195,6 +205,10 @@ ul.gallery li picture > * {
     max-height: 100vh;
     max-width: 100%;
     width: auto;
+}
+
+ul.gallery li video {
+    margin: 2rem 0;
 }
 
 ul.gallery li picture.caption {

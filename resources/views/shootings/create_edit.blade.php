@@ -68,6 +68,47 @@
 
     <hr />
 
+    <h3>Videos</h3>
+
+    <div class="row">
+        @foreach ($shooting->videos as $video)
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{asset($video->cover)}}" style="object-fit: cover;"/>
+                    <div class="card-body">
+                        <a target="_blank" href="{{ $video->preview_h264}}">Preview H264</a><br />
+                        <a target="_blank" href="{{ $video->preview_webm}}">Preview WebM</a>       <br />
+                        <a target="_blank" href="{{ $video->{'720_h264'} }}">720p H264</a><br />
+                        <a target="_blank" href="{{ $video->{'720_webm'} }}">720p WebM</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route($video->published ? 'shootings.videos.unpublish' : 'shootings.videos.publish', [$shooting, $video]) }}"
+                            class="btn {{ $video->published ? 'btn-primary' : 'btn-secondary' }} btn-sm">
+                            {{ $video->published ? 'Published' : 'Unpublished' }}
+                        </a>
+                        <a href="{{ route($video->exclusive ? 'shootings.videos.unexclusive' : 'shootings.videos.exclusive', [$shooting, $video]) }}"
+                                class="btn {{ $video->exclusive ? 'btn-info' : 'btn-secondary' }} btn-sm">
+                            {{ $video->exclusive ? 'Exclusive' : 'Not Exclusive' }}
+                        </a>
+                        <a href="{{ route('shootings.videos.edit', [$shooting, $video]) }}" class="btn btn-warning btn-sm">Edit</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-center">
+                        <a href="{{ route('shootings.videos.create', $shooting) }}" class="btn btn-success btn-lg btn-block">Add</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
     <h3>Photos</h3>
 
     <div class="row">
@@ -96,8 +137,8 @@
                         </a>
                         <a href="{{ route($photo->exclusive ? 'shootings.photos.unexclusive' : 'shootings.photos.exclusive', [$shooting, $photo]) }}"
                                 class="btn {{ $photo->exclusive ? 'btn-info' : 'btn-secondary' }} btn-sm">
-                                {{ $photo->exclusive ? 'Exclusive' : 'Not Exclusive' }}
-                            </a>
+                            {{ $photo->exclusive ? 'Exclusive' : 'Not Exclusive' }}
+                        </a>
                         <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
                         @if ($shooting->primary_photo_id == $photo->id)
                             disabled

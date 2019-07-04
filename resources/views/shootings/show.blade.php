@@ -21,6 +21,16 @@
 
 @section('content')
     <ul class="gallery">
+        @foreach ($shooting->videos()->where('published', true)->get() as $video)
+            <li class="large">
+                @if ($video->exclusive && !$exclusive)
+                    @include('partials.video', ['video' => $video, 'caption' => true])
+                @else
+                    @include('partials.video', ['video' => $video, 'caption' => false])
+                @endif
+            </li>
+        @endforeach
+
         @foreach ($shooting->photos()->where('published', true)->get() as $photo)
             <li class="large">
                 @if ($photo->exclusive && !$exclusive)
