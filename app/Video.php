@@ -16,7 +16,7 @@ class Video extends Model
 
     public function getCoverAttribute()
     {
-        return 'storage/'. $this->attributes['cover'];
+        return isset($this->attributes['cover']) ?? 'storage/'. $this->attributes['cover'];
     }
 
     public function deleteCover()
