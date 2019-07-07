@@ -51,8 +51,8 @@ class ShootingController extends Controller
         ]);
 
         Shooting::create($request
-            ->merge(['exclusive_hash' => str_random(8)])
-            ->only(['exclusive_hash', 'name', 'slug', 'date', 'location', 'published', 'comment']));
+            ->merge(['exclusive_hash' => str_random(8), 'user_id' => $request->user()->id])
+            ->only(['exclusive_hash', 'name', 'slug', 'date', 'location', 'published', 'comment', 'user_id']));
 
         return redirect()->route('shootings.index');
     }
@@ -76,6 +76,8 @@ class ShootingController extends Controller
      */
     public function edit(Shooting $shooting)
     {
+        if (!$shooting->isMine()) abort(403);
+
         return view('shootings.create_edit', [
             'shooting' => $shooting,
             'models' => Model::all()
@@ -92,6 +94,8 @@ class ShootingController extends Controller
     public function update(Request $request, $id)
     {
         $shooting = Shooting::findOrFail($id);
+
+        if (!$shooting->isMine()) abort(403);
 
         $request->validate([
             'name' => 'string|required',

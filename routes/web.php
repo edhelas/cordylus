@@ -17,6 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('shootings', 'Admin\ShootingController');
     Route::resource('models', 'Admin\ModelController');
 
+    Route::get('user/edit', 'Admin\UserController@edit')->name('user.edit');
+    Route::put('user', 'Admin\UserController@update')->name('user.update');
+
     // Photos
     Route::resource('shootings.photos', 'Admin\ShootingPhotoController');
     Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
@@ -42,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('g/', 'ShootingController@index')->name('shootings.gallery');
 Route::get('h/{hash}', 'Admin\ShootingModelController@show')->name('shooting.model.show.hash');
 Route::get('s/{slug}/{hash?}', 'ShootingController@show')->name('shootings.show.slug');
+
+# Author
+Route::get('a/{slug}', 'AuthorController@show')->name('authors.show.slug');
 
 # Model
 Route::get('m/{slug}', 'ModelController@show')->name('models.show.slug');

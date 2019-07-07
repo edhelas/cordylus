@@ -6,6 +6,10 @@
             @endif
             <div class="label">
                 <h1>{{ $shooting->name }}</h1>
+                <span>
+                    by
+                    <a href="{{route('authors.show.slug', $shooting->author->slug)}}">{{ $shooting->author->name }}</a>
+                </span>
                 @if (!empty($shooting->with))
                     <span>with {!! $shooting->with !!}</span>
                 @endif

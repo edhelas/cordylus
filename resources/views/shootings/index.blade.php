@@ -15,9 +15,11 @@
                         @if ($shooting->published)
                             <span class="badge badge-success">Published</span>
                         @endif
-                        <a href="{{ route('shootings.edit', $shooting) }}" class="btn btn-info float-right">Edit</a>
+                        @if ($shooting->isMine())
+                            <a href="{{ route('shootings.edit', $shooting) }}" class="btn btn-info float-right">Edit</a>
+                        @endif
                     </h5>
-                    <p class="card-text">with {{$shooting->models->implode('name', ', ')}}
+                    <p class="card-text">by {{$shooting->author->name}} with {{$shooting->models->implode('name', ', ')}}
                     <p class="card-text"><small class="text-muted">{{$shooting->photos()->count()}} photos</small></p>
                 </div>
             </div>

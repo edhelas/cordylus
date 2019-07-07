@@ -43,9 +43,9 @@ class ModelController extends Controller
     {
         $request->validate([
             'name' => 'string|required',
-            'instagram' => 'string',
+            'instagram' => 'nullable|string',
             'slug' => 'alpha_dash|required',
-            'website' => 'string'
+            'website' => 'nullable|string'
         ]);
 
         Model::create($request->only(['name', 'instagram', 'slug', 'website']));
@@ -90,9 +90,9 @@ class ModelController extends Controller
 
         $request->validate([
             'name' => 'string|required',
-            'instagram' => 'string',
+            'instagram' => 'nullable|string',
             'slug' => 'alpha_dash|required',
-            'website' => 'string'
+            'website' => 'nullable|string'
         ]);
 
         $model->fill($request->only(['name', 'slug', 'instagram', 'website']));

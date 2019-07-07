@@ -13,7 +13,7 @@
 
     <p>If you like what we're doing you can support us on <a href="https://www.patreon.com/kinky_lab">Patreon</a> and unlock all our content for a few bucks per month.</p>
 
-    <h2>Licence</h2>
+    <!--<h2>Licence</h2>
 
     <p>All our content is in the Public Domain. Feel free to share it :)<p>
 
@@ -40,7 +40,7 @@
     <p>All our pictures and videos are edited using Free and OpenSource Softwares.</p>
     <p>The RAW pictures are developped using  <a href="https://www.darktable.org/">Darktable</a> and <a href="https://www.gimp.org/">TheGimp</a>, logos and other screens are made using <a href="https://inkscape.org/">Inkscape</a> and videos are edited using <a href="https://kdenlive.org/">Kdenlive</a> and converted using <a href="https://handbrake.fr/">HandBrake</a>.</p>
 
-    <p>This website has been developped and is hosted using only Free Softwares such as nginx, PostgreSQL, PHP and Debian.</p>
+    <p>This website has been developped and is hosted using only Free Softwares such as nginx, PostgreSQL, PHP and Debian.</p>-->
 </article>
 
 @endsection
