@@ -167,19 +167,22 @@ ul.gallery li div.label {
     background-color: rgba(0, 0, 0, 0.75);
     display: block;
     position: absolute;
-    bottom: 1.5rem;
-    padding: 0 1rem;
+    bottom: 3rem;
+    padding: 0.75rem 1rem 0.5rem;
 }
 
 ul.gallery li div.label h1 {
     display: inline;
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 1.75rem;
     padding-right: 0.5rem;
 }
 
 ul.gallery li div.label span {
     font-size: 1.15rem;
+}
+
+ul.gallery li div.label > * {
+    line-height: 1.5rem;
 }
 
 @media screen and (max-width: 1024px) {

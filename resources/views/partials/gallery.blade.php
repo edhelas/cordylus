@@ -9,10 +9,10 @@
                 <span>
                     by
                     <a href="{{route('authors.show.slug', $shooting->author->slug)}}">{{ $shooting->author->name }}</a>
+                    @if (!empty($shooting->with))
+                        with {!! $shooting->with !!}
+                    @endif
                 </span>
-                @if (!empty($shooting->with))
-                    <span>with {!! $shooting->with !!}</span>
-                @endif
             </div>
             <div class="description">
                 {{ $shooting->photos()->count() + $shooting->videos()->count()}} medias
