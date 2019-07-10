@@ -60,7 +60,6 @@ footer {
     padding: 1rem;
     text-align: center;
     font-size: 1.1rem;
-    clear: both;
 }
 
 /* Article */
@@ -120,11 +119,18 @@ p.warning {
 
 ul.gallery {
     max-width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 ul.gallery li {
+    flex: 0 1 33.33%;
     float: left;
-    width: 33.33%;
+    /*display: inline-block;*/
     display: block;
     position: relative;
     min-height: 20rem;
@@ -134,13 +140,13 @@ ul.gallery li {
 
 @media screen and (max-width: 1024px) {
     ul.gallery li:not(.large) {
-        width: 50%;
+        flex: 0 1 50%;
     }
 }
 
 @media screen and (max-width: 800px) {
     ul.gallery li:not(.large) {
-        width: 100%;
+        flex: 0 1 100%;
     }
 }
 
@@ -149,7 +155,7 @@ ul.gallery li.active:hover {
 }
 
 ul.gallery li.large {
-    width: 100%;
+    flex: 0 1 100%;
     text-align: center;
 }
 
