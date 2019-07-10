@@ -9,7 +9,7 @@ use Image;
 class Photo extends Model
 {
     protected $fillable = ['shooting_id', 'path', 'published'];
-    private $sizes = ['s' => 128, 'm' => 256, 'l' => 512, 'xl' => 1920];
+    private $sizes = ['s' => 128, 'm' => 256, 'sl' => 512, 'ml' => 768, 'l' => 1024, 'xl' => 1536, 'xxl' => 1920];
 
     public function shoot()
     {
@@ -42,14 +42,16 @@ class Photo extends Model
         }
     }
 
-    public function deleteThumbnails()
+    public function deleteThumbnails($original = true)
     {
         foreach($this->sizes as $key => $size) {
             File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.jpg');
             File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.webp');
         }
 
-        File::delete(\storage_path('app/public/').$this->path);
+        if ($original) {
+            File::delete(\storage_path('app/public/').$this->path);
+        }
     }
 
     private function createThumbnail(int $size)

@@ -242,7 +242,7 @@ ul.gallery li picture.caption > * {
     height: 70vh;
     margin-top: 15vh;
     margin-bottom: 15vh;
-    filter: blur(1rem);
+    filter: blur(0.5rem);
 }
 
 
