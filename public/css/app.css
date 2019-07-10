@@ -60,6 +60,7 @@ footer {
     padding: 1rem;
     text-align: center;
     font-size: 1.1rem;
+    clear: both;
 }
 
 /* Article */
@@ -119,20 +120,28 @@ p.warning {
 
 ul.gallery {
     max-width: 100%;
-
-    display: flex;
-    flex-flow: row wrap;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
 }
 
 ul.gallery li {
-    flex: 0 1 calc(33.33% - 0.5rem);
-    display: inline-block;
+    float: left;
+    width: 33.33%;
+    display: block;
     position: relative;
     min-height: 20rem;
-    padding-bottom: 0.5rem;
+    padding: 0.25rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    ul.gallery li:not(.large) {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    ul.gallery li:not(.large) {
+        width: 100%;
+    }
 }
 
 ul.gallery li.active:hover {
@@ -140,7 +149,7 @@ ul.gallery li.active:hover {
 }
 
 ul.gallery li.large {
-    flex: 0 1 100%;
+    width: 100%;
     text-align: center;
 }
 
@@ -185,18 +194,6 @@ ul.gallery li div.label > * {
     line-height: 1.5rem;
 }
 
-@media screen and (max-width: 1024px) {
-    ul.gallery li:not(.large) {
-        flex: 0 1 calc(50% - 0.35rem);
-    }
-}
-
-@media screen and (max-width: 800px) {
-    ul.gallery li:not(.large) {
-        flex: 0 1 100%;
-    }
-}
-
 ul.gallery li picture,
 ul.gallery li video {
     max-width: 100%;
@@ -206,8 +203,11 @@ ul.gallery li video {
 
 ul.gallery li picture > * {
     max-height: 100vh;
-    max-width: 100%;
-    width: auto;
+}
+
+ul.gallery li:not(.large) picture > * {
+    object-fit: cover;
+    width: 100%;
 }
 
 ul.gallery li video {

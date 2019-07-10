@@ -9,6 +9,7 @@
                 <span>
                     by
                     <a href="{{route('authors.show.slug', $shooting->author->slug)}}">{{ $shooting->author->name }}</a>
+                    <br />
                     @if (!empty($shooting->with))
                         with {!! $shooting->with !!}
                     @endif
