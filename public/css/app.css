@@ -132,6 +132,7 @@ ul.gallery li {
     position: relative;
     min-height: 20rem;
     padding: 0.25rem;
+    justify-content: center;
     box-sizing: border-box;
 }
 
