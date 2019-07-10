@@ -123,14 +123,11 @@ ul.gallery {
     display: flex;
     flex-flow: row wrap;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
 }
 
 ul.gallery li {
     flex: 0 1 33.33%;
-    float: left;
-    /*display: inline-block;*/
     display: block;
     position: relative;
     min-height: 20rem;
@@ -231,7 +228,7 @@ ul.gallery li video + .caption {
 
 ul.gallery li picture.caption:after {
     content: "Exclusive picture, visit our Patreon to get access to it";
-    bottom: 50vh;
+    bottom: 100%;
 }
 
 ul.gallery li video + .caption,
