@@ -119,11 +119,11 @@ p.warning {
 
 ul.gallery {
     max-width: 100%;
-
     display: flex;
     flex-flow: row wrap;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 ul.gallery li {
@@ -132,7 +132,6 @@ ul.gallery li {
     position: relative;
     min-height: 20rem;
     padding: 0.25rem;
-    justify-content: center;
     box-sizing: border-box;
 }
 
