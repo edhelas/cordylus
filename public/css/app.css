@@ -238,13 +238,11 @@ ul.gallery li picture.caption:after {
     box-sizing: border-box;
 }
 
-ul.gallery li picture.caption > * {
+/*ul.gallery li picture.caption > * {
     height: 70vh;
     margin-top: 15vh;
     margin-bottom: 15vh;
-    filter: blur(0.5rem);
-}
-
+}*/
 
 /* Welcome logo */
 ul.logo {

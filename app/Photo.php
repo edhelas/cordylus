@@ -18,11 +18,19 @@ class Photo extends Model
 
     public function path(string $size = 'm', string $format = 'jpg')
     {
-        return isset($this->attributes['path'])
-            ? $size == 'o'
-                ? 'storage/'.$this->attributes['path']
-                : 'storage/'.$this->getHash($this->sizes[$size].'_'.$this->attributes['path']).'.'.$format
-            : 'img/placeholder.jpg';
+        if (isset($this->attributes['path'])) {
+            if ($size == 'blurred') {
+                return 'storage/'.$this->getHash('blurred_'.$this->attributes['path']).'.'.$format;
+            }
+
+            if ($size == 'o') {
+                return 'storage/'.$this->attributes['path'];
+            }
+
+            return 'storage/'.$this->getHash($this->sizes[$size].'_'.$this->attributes['path']).'.'.$format;
+        }
+
+        return 'img/placeholder.jpg';
     }
 
     public function models()
@@ -40,6 +48,21 @@ class Photo extends Model
         foreach($this->sizes as $key => $size) {
             $this->createThumbnail($size);
         }
+
+        $this->createBlurred();
+    }
+
+    private function createBlurred()
+    {
+        $path = \storage_path('app/public/');
+
+        $blurred = Image::make($path.$this->path)->resize($this->sizes['xxl'], $this->sizes['xxl'], function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $blurred->blur(100);
+        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.jpg', 80);
+        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.webp', 80);
     }
 
     public function deleteThumbnails($original = true)
@@ -48,6 +71,9 @@ class Photo extends Model
             File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.jpg');
             File::delete(\storage_path('app/public/').$this->getHash($size.'_'.$this->path).'.webp');
         }
+
+        File::delete(\storage_path('app/public/').$this->getHash('blurred_'.$this->path).'.jpg');
+        File::delete(\storage_path('app/public/').$this->getHash('blurred_'.$this->path).'.webp');
 
         if ($original) {
             File::delete(\storage_path('app/public/').$this->path);
