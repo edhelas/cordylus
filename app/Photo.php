@@ -61,8 +61,8 @@ class Photo extends Model
         });
 
         $blurred->blur(100);
-        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.jpg', 80);
-        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.webp', 80);
+        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.jpg', 90);
+        $blurred->save($path.$this->getHash('blurred_'.$this->path).'.webp', 90);
     }
 
     public function deleteThumbnails($original = true)
