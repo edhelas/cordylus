@@ -87,8 +87,8 @@ class Photo extends Model
         $thumb = Image::make($path.$this->path)->resize($size, $size, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.jpg', 80);
-        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.webp', 80);
+        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.jpg', 95);
+        $thumb->save($path.$this->getHash($size.'_'.$this->path).'.webp', 95);
     }
 
     private function getHash($filePath)
