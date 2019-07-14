@@ -35,6 +35,11 @@
             </a>
         </li>
         <li>
+            <a href="https://twitter.com/Kinky_Lab">
+                <img src="img/twitter.svg">Twitter
+            </a>
+        </li>
+        <li>
             <a href="https://fetlife.com/users/1745697">
                 <img src="img/fetlife.svg">Fetlife
             </a>
