@@ -16,4 +16,9 @@ class AuthorController extends Controller
             'model' => $author
         ]);
     }
+
+    public function about()
+    {
+        return view('about', ['authors' => User::all()]);
+    }
 }
