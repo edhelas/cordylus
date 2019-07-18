@@ -39,6 +39,36 @@ class Shooting extends Model
         return ($this->user_id == \Auth::user()->id);
     }
 
+    public function getStringDescriptionAttribute()
+    {
+        $description = $this->date->format('M j, Y');
+
+        $description .= $this->models()->count() > 0
+                ? ' with ' . $this->models->map(function ($item, $key) {
+                        return $item->name;
+                    })->implode(', ')
+                : '';
+        $description .= !empty($this->location)
+                ? ' – '.$this->location
+                : '';
+
+        return $description;
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $description = $this->date->format('M j, Y');
+
+        $description .= !empty($this->getWithAttribute())
+                ? ' with ' . $this->getWithAttribute()
+                : '';
+        $description .= !empty($this->location)
+                ? ' – '.$this->location
+                : '';
+
+        return $description;
+    }
+
     public function getWithAttribute()
     {
         return $this->models->map(function ($item, $key) {

@@ -14,9 +14,16 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ MetaTag::get('title') }}</title>
 
-    <meta name="description" content="Fetish Photography" />
+    {!! MetaTag::tag('description', 'Fetish Photography') !!}
+
+    {!! MetaTag::openGraph() !!}
+
+    {!! MetaTag::twitterCard() !!}
+
+    {{--Set default share picture after custom section pictures--}}
+    {!! MetaTag::tag('image', asset('img/256.png')) !!}
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/utils.js') }}" defer></script>

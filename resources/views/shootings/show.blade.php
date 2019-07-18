@@ -9,13 +9,7 @@
 
 @section('subsubtitle')
 <h3>
-    {{$shooting->date->format('M j, Y')}}
-    @if (!empty($shooting->with))
-        with {!! $shooting->with !!}
-    @endif
-    @if (!empty($shooting->location))
-        - {{$shooting->location}}
-    @endif
+    {!! $shooting->description !!}
 <h3>
 @endsection
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Shooting;
+use MetaTag;
 
 class ShootingController extends Controller
 {
@@ -24,6 +25,10 @@ class ShootingController extends Controller
     public function show(string $slug, string $exclusiveHash = null)
     {
         $shooting = Shooting::where('slug', $slug)->published()->firstOrFail();
+
+        MetaTag::set('title', '/KinkyLab/ – ' . $shooting->name);
+        MetaTag::set('description', $shooting->stringDescription);
+        MetaTag::set('image', asset($shooting->primary->path('l')));
 
         return view('shootings.show', [
             'shooting' => $shooting,
