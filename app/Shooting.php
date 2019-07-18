@@ -43,6 +43,8 @@ class Shooting extends Model
     {
         $description = $this->date->format('M j, Y');
 
+        $description .= ' by ' . $this->author->name;
+
         $description .= $this->models()->count() > 0
                 ? ' with ' . $this->models->map(function ($item, $key) {
                         return $item->name;
@@ -58,6 +60,8 @@ class Shooting extends Model
     public function getDescriptionAttribute()
     {
         $description = $this->date->format('M j, Y');
+
+        $description .= ' by ' . '<a href="'.route('authors.show.slug', $this->author->slug).'">' . $this->author->name . '</a>';
 
         $description .= !empty($this->getWithAttribute())
                 ? ' with ' . $this->getWithAttribute()

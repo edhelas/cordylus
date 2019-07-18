@@ -5,6 +5,31 @@
 @section('content')
 
 <article>
+    <h2>Authors</h2>
+
+    @foreach ($authors as $author)
+        <h3 class="center"><a href="{{route('authors.show.slug', $author->slug)}}">{{ $author->name }}</a><h3>
+
+        <h4 class="links center">
+            @if ($author->instagram)
+                <a href="https://www.instagram.com/{{$author->instagram}}" target="_blank">Instagram</a>
+            @endif
+            @if ($author->website)
+                <a href="{{$author->website}}" target="_blank">Website</a>
+            @endif
+            @if ($author->patreon)
+                <a href="https://www.patreon.com/{{$author->patreon}}" target="_blank">Patreon</a>
+            @endif
+            @if ($author->twitter)
+                <a href="https://twitter.com/{{$author->twitter}}" target="_blank">Twitter</a>
+            @endif
+        <h4>
+
+        <p>{{$author->description}}</p>
+    @endforeach
+
+    <hr >
+
     <h2>Support Us</h2>
 
     <p>KinkyLab is a project by latex fetishist for latex fetishist.</p>

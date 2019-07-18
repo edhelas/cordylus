@@ -24,15 +24,18 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $user = $request->user();
-//dd($user);
+
         $request->validate([
             'name' => 'string|required',
             'instagram' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'patreon' => 'nullable|string',
+            'description' => 'nullable|string',
             'slug' => 'alpha_dash|required',
             'website' => 'nullable|string'
         ]);
 
-        $user->fill($request->only(['name', 'slug', 'instagram', 'website']));
+        $user->fill($request->only(['name', 'slug', 'instagram', 'twitter', 'patreon', 'website', 'description']));
         $user->save();
 
         return redirect()->route('user.edit');

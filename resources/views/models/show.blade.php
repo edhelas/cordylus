@@ -3,15 +3,20 @@
 @section('subtitle'){{$model->name}}@endsection
 
 @section('subsubtitle')
-<h3>
+<h4 class="links">
     @if ($model->instagram)
         <a href="https://www.instagram.com/{{$model->instagram}}" target="_blank">Instagram</a>
     @endif
-    @if ($model->instagram && $model->website)-@endif
     @if ($model->website)
         <a href="{{$model->website}}" target="_blank">Website</a>
     @endif
-<h3>
+    @if ($model->patreon)
+        <a href="https://www.patreon.com/{{$model->patreon}}" target="_blank">Patreon</a>
+    @endif
+    @if ($model->twitter)
+        <a href="https://twitter.com/{{$model->twitter}}" target="_blank">Twitter</a>
+    @endif
+<h4>
 @endsection
 
 @section('content')

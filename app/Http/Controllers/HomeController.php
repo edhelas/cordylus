@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Shooting;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -30,6 +30,6 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about');
+        return view('about', ['authors' => User::all()]);
     }
 }

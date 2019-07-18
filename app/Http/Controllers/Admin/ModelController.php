@@ -44,11 +44,13 @@ class ModelController extends Controller
         $request->validate([
             'name' => 'string|required',
             'instagram' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'patreon' => 'nullable|string',
             'slug' => 'alpha_dash|required',
             'website' => 'nullable|string'
         ]);
 
-        Model::create($request->only(['name', 'instagram', 'slug', 'website']));
+        Model::create($request->only(['name', 'instagram', 'twitter', 'patreon', 'slug', 'website']));
 
         return redirect()->route('models.index');
     }
@@ -91,11 +93,13 @@ class ModelController extends Controller
         $request->validate([
             'name' => 'string|required',
             'instagram' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'patreon' => 'nullable|string',
             'slug' => 'alpha_dash|required',
             'website' => 'nullable|string'
         ]);
 
-        $model->fill($request->only(['name', 'slug', 'instagram', 'website']));
+        $model->fill($request->only(['name', 'slug', 'instagram', 'twitter', 'patreon', 'website']));
         $model->save();
 
         return redirect()->route('models.index');

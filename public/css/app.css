@@ -45,6 +45,15 @@ header h1 a:visited {
     color: white;
 }
 
+.center {
+    text-align: center;
+}
+
+hr {
+    border-bottom: 1px solid #333;
+    padding-top: 1rem;
+}
+
 h2 {
     font-size: 1.75rem;
     line-height: 2.25rem;
@@ -52,8 +61,19 @@ h2 {
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+}
+
+.links a + a:before {
+    content: ' – ';
+    display: inline-block;
+    padding: 0 0.4rem 0 0.15rem;
 }
 
 footer {
@@ -67,6 +87,8 @@ footer {
 article {
     margin: 0 auto;
     max-width: 800px;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 article h2 {
@@ -186,7 +208,7 @@ ul.gallery li div.label {
 ul.gallery li div.label h1 {
     display: inline;
     font-size: 1.75rem;
-    padding-right: 0.5rem;
+    padding-right: 0.25rem;
 }
 
 ul.gallery li div.label span {

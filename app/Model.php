@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Model extends EloquentModel
 {
-    protected $fillable = ['name', 'instagram', 'slug', 'website'];
+    protected $fillable = ['name', 'instagram', 'slug', 'website', 'twitter', 'patreon'];
 
     public function shootings()
     {
