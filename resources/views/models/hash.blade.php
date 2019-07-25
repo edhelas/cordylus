@@ -32,30 +32,38 @@
 
                 {!! Form::open([
                         'route' => ['models.photos.create', $hash],
-                        'class' => 'opinion '.($photo->published ? 'published' : ''),
+                        'class' => 'opinion',
                         'id' => $photo->id
                 ]) !!}
                     <span class="num">n°{{$key+1}}</span>
-                    {!! Form::checkbox('validated', null, $photo->model($model->id)
-                        ? $photo->model($model->id)->pivot->validated
-                        : null, ['id' => 'validated_'.$photo->id]); !!}
+                    @if (!$photo->published)
+                        {!! Form::checkbox('validated', null, $photo->model($model->id)
+                            ? $photo->model($model->id)->pivot->validated
+                            : null, ['id' => 'validated_'.$photo->id]); !!}
 
-                    {{ $model->name }} {!! Form::label('validated_'.$photo->id, ' ') !!}
+                        {{ $model->name }} {!! Form::label('validated_'.$photo->id, ' ') !!}
 
-                    @foreach($photo->models()->where('id', '!=', $model->id)->get() as $m)
-                        - {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
-                    @endforeach
+                        @foreach($photo->models()->where('id', '!=', $model->id)->get() as $m)
+                            - {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
+                        @endforeach
 
-                    {!! Form::hidden('photo_id', $photo->id) !!}
+                        {!! Form::hidden('photo_id', $photo->id) !!}
 
-                    <div>
-                        {!! Form::textarea('comment', $photo->model($model->id)
-                            ? $photo->model($model->id)->pivot->comment
-                            : '', ['rows' => 2, 'placeholder' => 'Add a comment if you have one']); !!}
-                    </div>
-                    <div>
-                        {!! Form::submit('Save', ['class' => '']); !!}
-                    </div>
+                        <div>
+                            {!! Form::textarea('comment', $photo->model($model->id)
+                                ? $photo->model($model->id)->pivot->comment
+                                : '', ['rows' => 2, 'placeholder' => 'Add a comment if you have one']); !!}
+                        </div>
+                        <div>
+                            {!! Form::submit('Save', ['class' => '']); !!}
+                        </div>
+                    @else
+                        <p>Photo published</p>
+                        <p>Download links:
+                            <a href="{{asset($photo->path('xxl'))}}" target="_blank">High resolution (HD)</a> -
+                            <a href="{{asset($photo->path('o'))}}" target="_blank">Original (very large file)</a>
+                        </p>
+                    @endif
                 {!! Form::close() !!}
             </li>
         @endforeach
