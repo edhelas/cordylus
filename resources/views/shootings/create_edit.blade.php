@@ -72,9 +72,9 @@
 
         <h3>Videos</h3>
 
-        <div class="row">
+        <div class="row pl-2 pr-2">
             @foreach ($shooting->videos as $video)
-                <div class="col-sm-3">
+                <div class="col-sm-3 p-1">
                     <div class="card">
                         <img class="card-img-top" src="{{asset($video->cover)}}" style="object-fit: cover;"/>
                         <div class="p-2">
@@ -102,8 +102,8 @@
                 </div>
             @endforeach
 
-            <div class="col-sm-3">
-                <a href="{{ route('shootings.videos.create', $shooting) }}" class="btn btn-success btn-lg btn-block mt-3">Add</a>
+            <div class="col-sm-3 p-1">
+                <a href="{{ route('shootings.videos.create', $shooting) }}" class="btn btn-success btn-lg btn-block">Add</a>
             </div>
         </div>
 
@@ -111,9 +111,9 @@
 
         <h3 id="photos">Photos</h3>
 
-        <div class="row">
+        <div class="row pl-2 pr-2">
             @foreach ($shooting->photos as $photo)
-                <div class="col-sm-3">
+                <div class="col-sm-3 p-1">
                     <div class="card">
                         <a href="{{asset($photo->path('o'))}}" target="_blank">
                             <img class="card-img-top" src="{{asset($photo->path('l'))}}" style="object-fit: cover;"/>
@@ -155,8 +155,8 @@
                 </div>
             @endforeach
 
-            <div class="col-sm-3">
-                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-lg btn-block mt-3">Add</a>
+            <div class="col-sm-3 p-1">
+                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-lg btn-block">Add</a>
             </div>
         </div>
 
@@ -164,9 +164,9 @@
 
         <h3>Models</h3>
 
-        <div class="row">
+        <div class="row pl-2 pr-2">
             @foreach ($shooting->models as $model)
-                <div class="col-sm-3">
+                <div class="col-sm-3 p-1">
                     <div class="card">
                         <div class="p-2">
                             <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm float-right">X</a>
@@ -180,7 +180,7 @@
                 </div>
             @endforeach
 
-            <div class="col-sm-3">
+            <div class="col-sm-3 p-1">
                 <div class="card">
                     <div class="p-2">
                         {!! Form::open(['route' => ['shootings.models.add', $shooting->id]]) !!}
