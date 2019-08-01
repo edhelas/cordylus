@@ -77,41 +77,39 @@
                 <div class="col-sm-3">
                     <div class="card">
                         <img class="card-img-top" src="{{asset($video->cover)}}" style="object-fit: cover;"/>
-                        <div class="card-body">
+                        <div class="p-2">
                             <a target="_blank" href="{{ $video->preview_h264}}">Preview H264</a><br />
                             <a target="_blank" href="{{ $video->preview_webm}}">Preview WebM</a>       <br />
                             <a target="_blank" href="{{ $video->{'720_h264'} }}">720p H264</a><br />
                             <a target="_blank" href="{{ $video->{'720_webm'} }}">720p WebM</a>
                         </div>
-                        <div class="card-footer">
-                            <a href="{{ route($video->published ? 'shootings.videos.unpublish' : 'shootings.videos.publish', [$shooting, $video]) }}"
-                                class="btn {{ $video->published ? 'btn-primary' : 'btn-secondary' }} btn-sm">
-                                {{ $video->published ? 'Published' : 'Unpublished' }}
-                            </a>
-                            <a href="{{ route($video->exclusive ? 'shootings.videos.unexclusive' : 'shootings.videos.exclusive', [$shooting, $video]) }}"
-                                    class="btn {{ $video->exclusive ? 'btn-info' : 'btn-secondary' }} btn-sm">
-                                {{ $video->exclusive ? 'Exclusive' : 'Not Exclusive' }}
-                            </a>
-                            <a href="{{ route('shootings.videos.edit', [$shooting, $video]) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <div class="p-1">
+                            <div class="btn-group" role="group">
+                                <a href="{{ route($video->published ? 'shootings.videos.unpublish' : 'shootings.videos.publish', [$shooting, $video]) }}"
+                                    class="btn {{ $video->published ? 'btn-success' : 'btn-secondary' }} btn-sm">
+                                    {{ $video->published ? '✓' : '✗' }}
+                                </a>
+                                <a href="{{ route('shootings.videos.edit', [$shooting, $video]) }}" title="Edit" class="btn btn-warning btn-sm">✏️</a>
+                            </div>
+                            <div class="btn-group float-right" role="group">
+                                <a href="{{ route($video->exclusive ? 'shootings.videos.unexclusive' : 'shootings.videos.exclusive', [$shooting, $video]) }}"
+                                        class="btn {{ $video->exclusive ? 'btn-info' : 'btn-link' }} btn-sm">
+                                    {{ $video->exclusive ? 'Exclusive' : 'Exclusive' }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
 
             <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="text-center">
-                            <a href="{{ route('shootings.videos.create', $shooting) }}" class="btn btn-success btn-lg btn-block">Add</a>
-                        </p>
-                    </div>
-                </div>
+                <a href="{{ route('shootings.videos.create', $shooting) }}" class="btn btn-success btn-lg btn-block mt-3">Add</a>
             </div>
         </div>
 
         <hr />
 
-        <h3>Photos</h3>
+        <h3 id="photos">Photos</h3>
 
         <div class="row">
             @foreach ($shooting->photos as $photo)
@@ -121,8 +119,8 @@
                             <img class="card-img-top" src="{{asset($photo->path('l'))}}" style="object-fit: cover;"/>
                         </a>
                         @if($photo->models->count() > 0)
-                        <div class="card-body">
-                            <p class="text-center mb-1">
+                        <div class="p-1">
+                            <p class="text-center mb-0">
                                 @foreach($photo->models as $m)
                                     {{ $m->name }} {{ $m->pivot->validated? '✓' : '✗' }}
                                     @if ($m->pivot->comment)
@@ -132,36 +130,33 @@
                             </p>
                         </div>
                         @endif
-                        <div class="card-footer">
-                            <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
-                                class="btn {{ $photo->published ? 'btn-primary' : 'btn-secondary' }} btn-sm">
-                                {{ $photo->published ? 'Published' : 'Unpublished' }}
-                            </a>
-                            <a href="{{ route($photo->exclusive ? 'shootings.photos.unexclusive' : 'shootings.photos.exclusive', [$shooting, $photo]) }}"
-                                    class="btn {{ $photo->exclusive ? 'btn-info' : 'btn-secondary' }} btn-sm">
-                                {{ $photo->exclusive ? 'Exclusive' : 'Not Exclusive' }}
-                            </a>
-                            <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-info btn-sm
-                            @if ($shooting->primary_photo_id == $photo->id)
-                                disabled
-                            @endif
-                            ">Primary
-                            </a>
-                            <a href="{{ route('shootings.photos.edit', [$shooting, $photo]) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" class="btn btn-danger btn-sm">Delete</a>
+                        <div class="p-1">
+                            <div class="btn-group" role="group">
+                                <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
+                                    class="btn {{ $photo->published ? 'btn-success' : 'btn-secondary' }} btn-sm"
+                                    title="{{ $photo->published ? 'Published' : 'Unpublished' }}">
+                                    {{ $photo->published ? '✓' : '✗' }}
+                                </a>
+                                <a href="{{ route('shootings.photos.edit', [$shooting, $photo]) }}" title="Edit" class="btn btn-warning btn-sm">✏️</a>
+                                <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" title="Delete" class="btn btn-danger btn-sm">🗑️</a>
+                            </div>
+                            <div class="btn-group float-right" role="group">
+                                <a href="{{ route('shootings.photos.primary', [$shooting, $photo]) }}" class="btn btn-sm
+                                    {{ ($shooting->primary_photo_id == $photo->id) ? 'btn-info' : 'btn-link' }}">
+                                    Main
+                                </a>
+                                <a href="{{ route($photo->exclusive ? 'shootings.photos.unexclusive' : 'shootings.photos.exclusive', [$shooting, $photo]) }}"
+                                        class="btn {{ $photo->exclusive ? 'btn-info' : 'btn-link' }} btn-sm">
+                                    Exclusive
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
 
             <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="text-center">
-                            <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-lg btn-block">Add</a>
-                        </p>
-                    </div>
-                </div>
+                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-lg btn-block mt-3">Add</a>
             </div>
         </div>
 
@@ -173,7 +168,7 @@
             @foreach ($shooting->models as $model)
                 <div class="col-sm-3">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="p-2">
                             <a href="{{ route('shootings.models.remove', [$shooting, $model]) }}" class="btn btn-danger btn-sm float-right">X</a>
                             <h5 class="card-title">{{$model->name}}</h5>
                             <p class="card-text form-group">
@@ -187,7 +182,7 @@
 
             <div class="col-sm-3">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="p-2">
                         {!! Form::open(['route' => ['shootings.models.add', $shooting->id]]) !!}
                         <div class="form-row">
                             <div class="form-group col-md-10">
