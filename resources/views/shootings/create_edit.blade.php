@@ -56,7 +56,7 @@
         </div>
 
         {!! Form::submit($shooting->id ? 'Save' :'Create', ['class' => 'btn btn-primary float-right']); !!}
-        <div class="form-group col-md-4">
+            <div class="form-group col-md-4">
                 <div class="form-check">
                         {!! Form::checkbox('published', null, $shooting->published, ['class' => 'form-check-input', 'id' =>'published']); !!}
                         {!! Form::label('published', 'Published', ['class' => 'form-check-label']) !!}

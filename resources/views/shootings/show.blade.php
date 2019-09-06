@@ -10,7 +10,7 @@
 @section('subsubtitle')
 <h3>
     {!! $shooting->description !!}
-<h3>
+</h3>
 @endsection
 
 @section('content')

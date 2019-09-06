@@ -11,7 +11,7 @@
     @if (!empty($shooting->location))
         - {{$shooting->location}}
     @endif
-<h3>
+</h3>
 
 <div class="info">
     <p>Hello {{$model->name}}. Here are the selected pictures waiting for your approval.</p>

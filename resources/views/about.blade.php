@@ -23,7 +23,7 @@
             @if ($author->twitter)
                 <a href="https://twitter.com/{{$author->twitter}}" target="_blank">Twitter</a>
             @endif
-        <h4>
+        </h4>
 
         <p>{{$author->description}}</p>
     @endforeach

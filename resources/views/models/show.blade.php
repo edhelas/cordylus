@@ -16,7 +16,7 @@
     @if ($model->twitter)
         <a href="https://twitter.com/{{$model->twitter}}" target="_blank">Twitter</a>
     @endif
-<h4>
+</h4>
 @endsection
 
 @section('content')
