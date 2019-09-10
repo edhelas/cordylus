@@ -47,12 +47,13 @@ class ShootingController extends Controller
             'name' => 'string|required',
             'date' => 'date|required',
             'slug' => 'alpha_dash|unique:shootings|required',
-            'published' => 'boolean'
+            'published' => 'boolean',
+            'hidden' => 'boolean'
         ]);
 
         Shooting::create($request
             ->merge(['exclusive_hash' => str_random(8), 'user_id' => $request->user()->id])
-            ->only(['exclusive_hash', 'name', 'slug', 'date', 'location', 'published', 'comment', 'user_id']));
+            ->only(['exclusive_hash', 'name', 'slug', 'date', 'location', 'published', 'comment', 'user_id', 'hidden']));
 
         return redirect()->route('shootings.index');
     }
@@ -105,6 +106,7 @@ class ShootingController extends Controller
 
         $shooting->fill($request->only(['name', 'slug', 'date', 'location', 'comment']));
         $shooting->published = $request->input('published', false);
+        $shooting->hidden = $request->input('hidden', false);
         $shooting->save();
 
         return redirect()->route('shootings.edit', $id);

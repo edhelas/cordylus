@@ -3,11 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Shooting extends Model
 {
     protected $dates = ['date'];
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+    }
 
     public function videos()
     {
@@ -34,6 +40,11 @@ class Shooting extends Model
         return $query->where('published', true);
     }
 
+    public function scopeNotHidden($query)
+    {
+        return $query->where('hidden', false);
+    }
+
     public function isMine()
     {
         return ($this->user_id == \Auth::user()->id);
@@ -42,9 +53,7 @@ class Shooting extends Model
     public function getStringDescriptionAttribute()
     {
         $description = $this->date->format('M j, Y');
-
         $description .= ' by ' . $this->author->name;
-
         $description .= $this->models()->count() > 0
                 ? ' with ' . $this->models->map(function ($item, $key) {
                         return $item->name;
@@ -60,9 +69,7 @@ class Shooting extends Model
     public function getDescriptionAttribute()
     {
         $description = $this->date->format('M j, Y');
-
         $description .= ' by ' . '<a href="'.route('authors.show.slug', $this->author->slug).'">' . $this->author->name . '</a>';
-
         $description .= !empty($this->getWithAttribute())
                 ? ' with ' . $this->getWithAttribute()
                 : '';

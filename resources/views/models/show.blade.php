@@ -20,5 +20,5 @@
 @endsection
 
 @section('content')
-    @include('partials.gallery', ['shootings' => $model->shootings()->published()->get()])
+    @include('partials.gallery', ['shootings' => $model->shootings()->notHidden()->published()->get()])
 @endsection
