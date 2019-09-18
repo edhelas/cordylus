@@ -27,7 +27,7 @@ class Shooting extends Model
 
     public function photos()
     {
-        return $this->hasMany('App\Photo')->orderBy('created_at');
+        return $this->hasMany('App\Photo')->orderBy('position', 'asc');
     }
 
     public function models()

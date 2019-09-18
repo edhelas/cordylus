@@ -3,10 +3,10 @@
 @section('content')
 
     <ul class="grid">
-        <li><img src="https://scontent-cdg2-1.cdninstagram.com/vp/2f3d96aaecfcf5b229b965a4b71cb8d9/5D9F7BF7/t51.2885-15/sh0.08/e35/c180.0.719.719a/s640x640/59766786_414261832749528_7323291032786345598_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com"></li>
-        <li><img src="https://scontent-cdg2-1.cdninstagram.com/vp/2cf064e442af488530d309fc2ba45c30/5D7C9D09/t51.2885-15/sh0.08/e35/c0.135.1080.1080a/s640x640/60365801_128794404977856_2281388175122433727_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com"></li>
-        <li><img src="https://scontent-cdg2-1.cdninstagram.com/vp/02bdb3bbe465099922ecb6d678aef89f/5D987C9D/t51.2885-15/sh0.08/e35/s640x640/47286155_283284888991387_2303636695823152169_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com"></li>
-        <li><img src="https://scontent-cdg2-1.cdninstagram.com/vp/329f4b2390b00aee7fcbc885deb09c5f/5D836C05/t51.2885-15/e15/c0.90.720.720a/s640x640/42341930_1834765123298096_2326199677006131258_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com"></li>
+        <li><img src="img/squares/1.jpg"></li>
+        <li><img src="img/squares/2.jpg"></li>
+        <li><img src="img/squares/3.jpg"></li>
+        <li><img src="img/squares/4.jpg"></li>
     </ul>
 
     <p class="warning">

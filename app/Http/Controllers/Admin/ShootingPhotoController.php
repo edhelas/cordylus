@@ -120,6 +120,32 @@ class ShootingPhotoController extends Controller
         return redirect()->route('shootings.edit', $shooting->id);
     }
 
+    public function moveUp(Shooting $shooting, Photo $photo)
+    {
+        if ($photo->position <= 0) return;
+
+        $previous = $shooting->photos()->where('position', $photo->position-1)->first();
+        $previous->position = $photo->position;
+        $previous->save();
+
+        $photo->update(['position' => $photo->position--]);
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
+    public function moveDown(Shooting $shooting, Photo $photo)
+    {
+        if ($photo->position >= $shooting->photos()->count()) return;
+
+        $next = $shooting->photos()->where('position', $photo->position+1)->first();
+        $next->position = $photo->position;
+        $next->save();
+
+        $photo->update(['position' => $photo->position++]);
+
+        return redirect()->route('shootings.edit', $shooting->id);
+    }
+
     public function setExclusive(Shooting $shooting, Photo $photo)
     {
         $photo->exclusive = true;

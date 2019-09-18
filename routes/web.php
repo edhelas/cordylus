@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
     Route::get('shootings/{shooting}/photos/{photo}/publish', 'Admin\ShootingPhotoController@publish')->name('shootings.photos.publish');
     Route::get('shootings/{shooting}/photos/{photo}/unpublish', 'Admin\ShootingPhotoController@unpublish')->name('shootings.photos.unpublish');
+    Route::get('shootings/{shooting}/photos/{photo}/up', 'Admin\ShootingPhotoController@moveUp')->name('shootings.photos.up');
+    Route::get('shootings/{shooting}/photos/{photo}/down', 'Admin\ShootingPhotoController@moveDown')->name('shootings.photos.down');
 
     Route::get('shootings/{shooting}/photos/{photo}/exclusive', 'Admin\ShootingPhotoController@setExclusive')->name('shootings.photos.exclusive');
     Route::get('shootings/{shooting}/photos/{photo}/unexclusive', 'Admin\ShootingPhotoController@unsetExclusive')->name('shootings.photos.unexclusive');
