@@ -3,10 +3,10 @@
 @section('content')
 
     <ul class="grid">
-        <li><img src="img/squares/1.jpg"></li>
-        <li><img src="img/squares/2.jpg"></li>
-        <li><img src="img/squares/3.jpg"></li>
-        <li><img src="img/squares/4.jpg"></li>
+        <li><img src="img/1.jpg"></li>
+        <li><img src="img/2.jpg"></li>
+        <li><img src="img/3.jpg"></li>
+        <li><img src="img/4.jpg"></li>
     </ul>
 
     <p class="warning">
