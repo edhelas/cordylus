@@ -115,7 +115,7 @@
 
         <div class="row pl-2 pr-2">
             @foreach ($shooting->photos as $photo)
-                <div class="col-sm-4 p-0 card">
+                <div class="col-sm-4 p-0 card" id="{{$photo->id}}">
                     <div class="p-1">
                         <div class="btn-group" role="group">
                             <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"

@@ -11,21 +11,6 @@ use App\Photo;
 
 class ShootingPhotoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Shooting $shooting)
     {
         $photo = new Photo;
@@ -36,12 +21,6 @@ class ShootingPhotoController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -60,12 +39,6 @@ class ShootingPhotoController extends Controller
         return redirect()->route('shootings.edit', $request->input('shooting_id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Shooting $shooting, Photo $photo)
     {
         return view('shootings.photos.create_edit', [
@@ -73,13 +46,6 @@ class ShootingPhotoController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Shooting $shooting, Photo $photo, Request $request)
     {
         $request->validate([
@@ -101,7 +67,7 @@ class ShootingPhotoController extends Controller
         $shooting->primary_photo_id = $photoId;
         $shooting->save();
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photoId);
     }
 
     public function publish(Shooting $shooting, Photo $photo)
@@ -109,7 +75,7 @@ class ShootingPhotoController extends Controller
         $photo->published = true;
         $photo->save();
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
     public function unpublish(Shooting $shooting, Photo $photo)
@@ -117,7 +83,7 @@ class ShootingPhotoController extends Controller
         $photo->published = false;
         $photo->save();
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
     public function moveUp(Shooting $shooting, Photo $photo)
@@ -130,7 +96,7 @@ class ShootingPhotoController extends Controller
 
         $photo->update(['position' => $photo->position--]);
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
     public function moveDown(Shooting $shooting, Photo $photo)
@@ -143,7 +109,7 @@ class ShootingPhotoController extends Controller
 
         $photo->update(['position' => $photo->position++]);
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
     public function setExclusive(Shooting $shooting, Photo $photo)
@@ -151,7 +117,7 @@ class ShootingPhotoController extends Controller
         $photo->exclusive = true;
         $photo->save();
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
     public function unsetExclusive(Shooting $shooting, Photo $photo)
@@ -159,7 +125,7 @@ class ShootingPhotoController extends Controller
         $photo->exclusive = false;
         $photo->save();
 
-        return redirect()->route('shootings.edit', $shooting->id);
+        return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
 
