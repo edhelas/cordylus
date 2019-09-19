@@ -8,7 +8,7 @@ use Image;
 
 class Photo extends Model
 {
-    protected $fillable = ['shooting_id', 'path', 'published'];
+    protected $fillable = ['shooting_id', 'path', 'published', 'position'];
     private $sizes = ['s' => 128, 'm' => 256, 'sl' => 512, 'ml' => 768, 'l' => 1024, 'xl' => 1536, 'xxl' => 1920];
 
     public function shoot()

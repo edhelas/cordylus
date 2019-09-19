@@ -23,6 +23,8 @@ class ShootingPhotoController extends Controller
 
     public function store(Request $request)
     {
+        $shooting = Shooting::findOrFail($request->input('shooting_id'));
+
         $request->validate([
             'photo' => 'image|required'
         ]);
@@ -30,13 +32,14 @@ class ShootingPhotoController extends Controller
         $name = $this->storeFile($request);
 
         $photo = Photo::create([
-            'shooting_id' => $request->input('shooting_id'),
-            'path' => $name
+            'shooting_id' => $shooting->id,
+            'path' => $name,
+            'position' => $shooting->photos()->count(),
         ]);
 
         $photo->createThumbnails();
 
-        return redirect()->route('shootings.edit', $request->input('shooting_id'));
+        return redirect()->route('shootings.edit', $shooting->id);
     }
 
     public function edit(Shooting $shooting, Photo $photo)
@@ -128,13 +131,6 @@ class ShootingPhotoController extends Controller
         return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Shooting $shooting, Photo $photo)
     {
         $photo->deleteThumbnails();
@@ -143,6 +139,12 @@ class ShootingPhotoController extends Controller
         if ($shooting->primary_photo_id == $photo->id) {
             $shooting->primary_photo_id = null;
             $shooting->save();
+        }
+
+        // We move the position of all the following pictures
+        foreach ($shooting->photos()->where('position', '>', $photo->position)->get() as $photo) {
+            $photo->position--;
+            $photo->save();
         }
 
         return redirect()->route('shootings.edit', $shooting->id);
