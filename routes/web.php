@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('user', 'Admin\UserController@update')->name('user.update');
 
     // Photos
+    Route::get('shootings/{shooting}/photos/publish_all', 'Admin\ShootingPhotoController@publishAll')->name('shootings.photos.publish_all');
     Route::resource('shootings.photos', 'Admin\ShootingPhotoController');
     Route::get('shootings/{shooting}/photos/{photo}/primary', 'Admin\ShootingPhotoController@setPrimary')->name('shootings.photos.primary');
     Route::get('shootings/{shooting}/photos/{photo}/publish', 'Admin\ShootingPhotoController@publish')->name('shootings.photos.publish');

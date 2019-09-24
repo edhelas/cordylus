@@ -73,6 +73,13 @@ class ShootingPhotoController extends Controller
         return redirect(route('shootings.edit', $shooting->id).'#'.$photoId);
     }
 
+    public function publishAll(Shooting $shooting)
+    {
+        $shooting->photos()->update(['published' => true]);
+
+        return redirect(route('shootings.edit', $shooting->id));
+    }
+
     public function publish(Shooting $shooting, Photo $photo)
     {
         $photo->published = true;

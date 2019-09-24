@@ -111,18 +111,22 @@
 
         <hr />
 
+        <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-success btn-sm float-right">
+            Publish All
+        </a>
+
         <h3 id="photos">Photos</h3>
 
         <div class="row pl-2 pr-2">
             @foreach ($shooting->photos as $photo)
                 <div class="col-sm-4 p-0 card" id="{{$photo->id}}">
                     <div class="p-1">
+                        <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
+                            class="btn {{ $photo->published ? 'btn-success' : 'btn-secondary' }} btn-sm"
+                            title="{{ $photo->published ? 'Published' : 'Unpublished' }}">
+                            {{ $photo->published ? 'Publ. ✓' : 'Unp. ✗' }}
+                        </a>
                         <div class="btn-group" role="group">
-                            <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
-                                class="btn {{ $photo->published ? 'btn-success' : 'btn-secondary' }} btn-sm"
-                                title="{{ $photo->published ? 'Published' : 'Unpublished' }}">
-                                {{ $photo->published ? '✓' : '✗' }}
-                            </a>
                             <a href="{{ route('shootings.photos.edit', [$shooting, $photo]) }}" title="Edit" class="btn btn-warning btn-sm">✏️</a>
                             <a href="{{ route('shootings.photos.remove', [$shooting, $photo]) }}" title="Delete" class="btn btn-danger btn-sm">🗑️</a>
                         </div>
