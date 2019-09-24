@@ -111,7 +111,7 @@
 
         <hr />
 
-        <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-success btn-sm float-right">
+        <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-primary btn-sm float-right">
             Publish All
         </a>
 

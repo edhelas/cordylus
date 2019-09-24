@@ -39,6 +39,12 @@ class ShootingPhotoController extends Controller
 
         $photo->createThumbnails();
 
+        // Set the first photo as the main one
+        if ($shooting->photos()->count() == 1) {
+            $shooting->primary_photo_id = $photo->id;
+            $shooting->save();
+        }
+
         return redirect()->route('shootings.edit', $shooting->id);
     }
 
@@ -104,7 +110,8 @@ class ShootingPhotoController extends Controller
         $previous->position = $photo->position;
         $previous->save();
 
-        $photo->update(['position' => $photo->position--]);
+        $photo->position = $photo->position-1;
+        $photo->save();
 
         return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
@@ -117,7 +124,8 @@ class ShootingPhotoController extends Controller
         $next->position = $photo->position;
         $next->save();
 
-        $photo->update(['position' => $photo->position++]);
+        $photo->position = $photo->position+1;
+        $photo->save();
 
         return redirect(route('shootings.edit', $shooting->id).'#'.$photo->id);
     }
