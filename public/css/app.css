@@ -180,12 +180,14 @@ ul.gallery li.large {
 
 ul.gallery li picture:not(.published):after {
     content: "Preview picture, do not publish";
-    position: absolute;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    font-size: 1.5rem;
-    line-height: 3rem;
+    background-color:red;
+    opacity: 0.5;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
     left: 0;
+    top: -4rem;
+    position: absolute;
 }
 
 ul.gallery div.description {
@@ -374,4 +376,9 @@ form.opinion textarea {
 form.opinion input[type=submit] {
     padding: 0.1rem 0.5rem;
     width: 100%;
+}
+
+form.opinion p.dlinks {
+    padding-top: 0.5rem;
+    font-size: 1.25rem;
 }

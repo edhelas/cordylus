@@ -59,11 +59,11 @@
                         </div>
                     @else
                         <p>Photo published</p>
-                        <p>Download links:
-                            <a href="{{asset($photo->path('xxl'))}}" target="_blank">High resolution (HD)</a> -
-                            <a href="{{asset($photo->path('o'))}}" target="_blank">Original (very large file)</a>
-                        </p>
                     @endif
+                    <p class="dlinks">Download links:
+                        <a href="{{asset($photo->path('xxl'))}}" target="_blank">High resolution (HD)</a> /
+                        <a href="{{asset($photo->path('o'))}}" target="_blank">Original (very large file)</a>
+                    </p>
                 {!! Form::close() !!}
             </li>
         @endforeach
