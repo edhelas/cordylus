@@ -344,14 +344,16 @@ form.opinion input[type=checkbox] {
 }
 
 form.opinion input[type=checkbox] + label {
-    background-color: red;
+    background-color: gray;
+    background-color: green;
     text-align: center;
     padding: 0.2rem 0.5rem;
     border-radius: 0.2rem;
+    filter: saturate(0);
 }
 
 form.opinion input[type=checkbox] + label:after {
-    content: "✗";
+    content: "Accept 👍";
 }
 
 form.opinion input[type=checkbox] + label:hover {
@@ -359,11 +361,7 @@ form.opinion input[type=checkbox] + label:hover {
 }
 
 form.opinion input[type=checkbox]:checked + label {
-    background-color: green;
-}
-
-form.opinion input[type=checkbox]:checked + label:after {
-    content: "✓";
+    filter: saturate(1);
 }
 
 form.opinion textarea {
