@@ -18,7 +18,7 @@ class ShootingController extends Controller
     public function index()
     {
         return view('shootings.gallery', [
-            'shootings' => Shooting::notHidden()->orderBy('date', 'desc')->published()->get()
+            'shootings' => Shooting::notHidden()->orderBy('created_at', 'desc')->published()->get()
         ]);
     }
 

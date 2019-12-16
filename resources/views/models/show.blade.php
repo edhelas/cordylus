@@ -20,5 +20,5 @@
 @endsection
 
 @section('content')
-    @include('partials.gallery', ['shootings' => $model->shootings()->notHidden()->published()->get()])
+    @include('partials.gallery', ['shootings' => $model->shootings()->orderBy('created_at', 'desc')->notHidden()->published()->get()])
 @endsection
