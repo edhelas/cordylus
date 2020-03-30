@@ -40,6 +40,11 @@
             </a>
         </li>
         <li>
+            <a href="https://www.youtube.com/channel/UCfQmxAdCh01Wx8A8FtZU2_g">
+                <img src="img/youtube.svg">YouTube
+            </a>
+        </li>
+        <li>
             <a href="https://fetlife.com/users/1745697">
                 <img src="img/fetlife.svg">Fetlife
             </a>
@@ -49,10 +54,10 @@
                 <img src="img/etsy.svg">Etsy
             </a>
         </li>
-        <li>
+        <!--<li>
             <a href="https://ko-fi.com/shinyelensil">
                 <img src="img/kofi.svg">Ko-fi
             </a>
-        </li>
+        </li>-->
     </ul>
 @endsection
