@@ -5,7 +5,10 @@
     <source
         srcset="
             @if(!empty($caption))
-                {{asset($picture->path('blurred', 'webp'))}}
+                {{asset($picture->path('xl', 'webp', true))}} 1024w,
+                {{asset($picture->path('l', 'webp', true))}} 768w,
+                {{asset($picture->path('ml', 'webp', true))}} 512w,
+                {{asset($picture->path('sl', 'webp', true))}} 256w
             @else
                 @if(empty($gallery))
                     {{asset($picture->path('xxl', 'webp'))}} 1536w,
@@ -20,7 +23,10 @@
     <img
         srcset="
             @if(!empty($caption))
-                {{asset($picture->path('blurred'))}}
+                {{asset($picture->path('xl', 'jpg', true))}} 1024w,
+                {{asset($picture->path('l', 'jpg', true))}} 768w,
+                {{asset($picture->path('ml', 'jpg', true))}} 512w,
+                {{asset($picture->path('sl', 'jpg', true))}} 256w
             @else
                 @if(empty($gallery))
                     {{asset($picture->path('xxl'))}} 1536w,
@@ -31,6 +37,6 @@
                 {{asset($picture->path('sl'))}} 256w
             @endif
         "
-        src="{{asset($picture->path(!empty($caption) ? 'blurred' : 'xl'))}}"
+        src="{{asset($picture->path('xl', 'jpg', !empty($caption)))}}"
     >
 </picture>
