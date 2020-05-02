@@ -230,7 +230,7 @@ ul.gallery li video {
 
 ul.gallery li picture > * {
     max-height: 100vh;
-    max-width: calc(100% - 0.15rem);
+    max-width: calc(100% - 0.25rem);
     min-height: 20rem;
 }
 
