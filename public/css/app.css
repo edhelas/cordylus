@@ -154,6 +154,7 @@ ul.gallery li {
     position: relative;
     min-height: 20rem;
     box-sizing: border-box;
+    margin-bottom: -2px; /* Remove weird margin */
 }
 
 @media screen and (max-width: 1024px) {
@@ -229,12 +230,7 @@ ul.gallery li video {
 
 ul.gallery li picture > * {
     max-height: 100vh;
-    max-width: 100%;
-}
-
-ul.gallery li picture > source,
-ul.gallery li picture > img {
-    display: block;
+    max-width: calc(100% - 0.15rem);
 }
 
 ul.gallery li:not(.large) picture > * {
