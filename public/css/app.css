@@ -61,8 +61,8 @@ h2 {
 }
 
 h3 {
-    font-size: 1.3rem;
-    line-height: 1.65rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 h4 {
@@ -254,7 +254,7 @@ ul.gallery li video + .caption {
 }
 
 ul.gallery li picture.caption:after {
-    content: "Exclusive picture, visit our Patreon to get access to it";
+    content: "Exclusive picture for our Patreons";
     bottom: 100%;
 }
 
@@ -267,7 +267,7 @@ ul.gallery li picture.caption:after {
     padding: 1rem;
     text-shadow: 0 0 0.5rem black;
     box-sizing: border-box;
-    min-width: 30rem;
+    min-width: 15rem;
 }
 
 /*ul.gallery li picture.caption > * {
