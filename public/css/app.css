@@ -153,8 +153,8 @@ ul.gallery li {
     display: block;
     position: relative;
     min-height: 20rem;
-    padding: 0.25rem;
     box-sizing: border-box;
+    margin-bottom: -2px; /* Remove weird margin */
 }
 
 @media screen and (max-width: 1024px) {

@@ -5,38 +5,41 @@
     <source
         srcset="
             @if(!empty($caption))
-                {{asset($picture->path('xl', 'webp', true))}} 1024w,
-                {{asset($picture->path('l', 'webp', true))}} 768w,
-                {{asset($picture->path('ml', 'webp', true))}} 512w,
-                {{asset($picture->path('sl', 'webp', true))}} 256w
+                {{asset($picture->path('xl', 'webp', true))}} 768w,
+                {{asset($picture->path('l', 'webp', true))}} 512w,
+                {{asset($picture->path('ml', 'webp', true))}} 256w,
+                {{asset($picture->path('sl', 'webp', true))}} 128w
             @else
                 @if(empty($gallery))
-                    {{asset($picture->path('xxl', 'webp'))}} 1536w,
+                    {{asset($picture->path('xxl', 'webp'))}} 1024w,
                 @endif
-                {{asset($picture->path('xl', 'webp'))}} 1024w,
-                {{asset($picture->path('l', 'webp'))}} 768w,
-                {{asset($picture->path('ml', 'webp'))}} 512w,
-                {{asset($picture->path('sl', 'webp'))}} 256w
+                {{asset($picture->path('xl', 'webp'))}} 768w,
+                {{asset($picture->path('l', 'webp'))}} 512w,
+                {{asset($picture->path('ml', 'webp'))}} 256w,
+                {{asset($picture->path('sl', 'webp'))}} 128w
             @endif
         "
         type="image/webp">
-    <img
+    <source
         srcset="
             @if(!empty($caption))
-                {{asset($picture->path('xl', 'jpg', true))}} 1024w,
-                {{asset($picture->path('l', 'jpg', true))}} 768w,
-                {{asset($picture->path('ml', 'jpg', true))}} 512w,
-                {{asset($picture->path('sl', 'jpg', true))}} 256w
+                {{asset($picture->path('xl', 'jpg', true))}} 768w,
+                {{asset($picture->path('l', 'jpg', true))}} 512w,
+                {{asset($picture->path('ml', 'jpg', true))}} 256w,
+                {{asset($picture->path('sl', 'jpg', true))}} 128w
             @else
                 @if(empty($gallery))
-                    {{asset($picture->path('xxl'))}} 1536w,
+                    {{asset($picture->path('xxl', 'jpg'))}} 1024w,
                 @endif
-                {{asset($picture->path('xl'))}} 1024w,
-                {{asset($picture->path('l'))}} 768w,
-                {{asset($picture->path('ml'))}} 512w,
-                {{asset($picture->path('sl'))}} 256w
+                {{asset($picture->path('xl', 'jpg'))}} 768w,
+                {{asset($picture->path('l', 'jpg'))}} 512w,
+                {{asset($picture->path('ml', 'jpg'))}} 256w,
+                {{asset($picture->path('sl', 'jpg'))}} 128w
             @endif
         "
+        type="image/jpg">
+    <img
+        loading="lazy"
         src="{{asset($picture->path('xl', 'jpg', !empty($caption)))}}"
     >
 </picture>
