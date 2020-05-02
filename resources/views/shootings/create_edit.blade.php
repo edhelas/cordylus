@@ -54,8 +54,7 @@
                 {!! Form::textarea('comment', $shooting->comment, ['class' => 'form-control', 'rows' => 2]); !!}
             </div>
         </div>
-
-        {!! Form::submit($shooting->id ? 'Save' :'Create', ['class' => 'btn btn-primary float-right']); !!}
+        <div class="form-row">
             <div class="form-group col-md-4">
                 <div class="form-check">
                     {!! Form::checkbox('published', null, $shooting->published, ['class' => 'form-check-input', 'id' =>'published']); !!}
@@ -66,6 +65,10 @@
                     {!! Form::label('hidden', 'Not listed in the galleries', ['class' => 'form-check-label']) !!}
                 </div>
             </div>
+            <div class="form-group col-md-8">
+                {!! Form::submit($shooting->id ? 'Save' :'Create', ['class' => 'btn btn-primary float-right']); !!}
+            </div>
+        </div>
         {!! Form::close() !!}
 
     </div>

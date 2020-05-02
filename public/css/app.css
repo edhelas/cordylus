@@ -146,6 +146,7 @@ ul.gallery {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 ul.gallery li {
@@ -154,7 +155,7 @@ ul.gallery li {
     position: relative;
     min-height: 20rem;
     box-sizing: border-box;
-    margin: -2px; /* Remove weird margin */
+    margin-top: -2px;
     overflow: hidden;
 }
 
@@ -224,13 +225,14 @@ ul.gallery li div.label > * {
 
 ul.gallery li picture,
 ul.gallery li video {
-    max-width: 100%;
+    max-width: 100vw;
     position: relative;
     box-shadow: black 0 0 2rem;
 }
 
 ul.gallery li picture > * {
     max-height: 100vh;
+    max-width: 100vw;
     min-height: 20rem;
 }
 
@@ -265,6 +267,7 @@ ul.gallery li picture.caption:after {
     padding: 1rem;
     text-shadow: 0 0 0.5rem black;
     box-sizing: border-box;
+    min-width: 30rem;
 }
 
 /*ul.gallery li picture.caption > * {
