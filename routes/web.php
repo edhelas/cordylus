@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('shootings/{shooting}/models/{model}/remove', 'Admin\ShootingModelController@destroy')->name('shootings.models.remove');
 });
 
+Route::get('feed', 'ShootingController@feed')->name('shootings.feed');
 Route::get('g/', 'ShootingController@index')->name('shootings.gallery');
 Route::get('h/{hash}', 'Admin\ShootingModelController@show')->name('shooting.model.show.hash');
 Route::get('s/{slug}/{hash?}', 'ShootingController@show')->name('shootings.show.slug');

@@ -41,6 +41,11 @@
     <main>
         @yield('content')
     </main>
-    <footer>Since 2018 | <a href="{{route('about')}}">About Us</a> | All models appearing on this website are 18 years of age or older </footer>
+    <footer>
+        Since 2018
+        | <a href="{{ route('shootings.feed') }}">Feed</a>
+        | <a href="{{ route('about') }}">About Us</a>
+        | All models appearing on this website are 18 years of age or older
+    </footer>
 </body>
 </html>

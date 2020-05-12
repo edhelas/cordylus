@@ -9,24 +9,24 @@
         <li><img src="img/4.jpg"></li>
     </ul>
 
+    <ul class="logo">
+        <li>
+            <a href="{{route('shootings.gallery')}}">
+                <img src="img/folder.svg">Enter
+            </a>
+        </li>
+    </ul>
+
     <p class="warning">
         This site contains dipictions of sexual acts involving latex and other subjects of an adult and fetishistic nature.
         <br />
         By proceeding you certify that you are over the age of consent to view material of this nature in your present location.
     </p>
 
-    <ul class="logo">
-        <li>
-        <a href="{{route('shootings.gallery')}}">
-                <img src="img/folder.svg">Enter
-            </a>
-        </li>
-    </ul>
-
     <ul class="logo second">
         <li>
             <a href="https://www.patreon.com/kinky_lab">
-                <img src="img/patreon.svg">Get exclusive content from Patreon
+                <img src="img/patreon.svg">Patreon
             </a>
         </li><br />
         <li>

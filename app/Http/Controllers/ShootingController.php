@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Shooting;
@@ -20,6 +19,71 @@ class ShootingController extends Controller
         return view('shootings.gallery', [
             'shootings' => Shooting::notHidden()->orderBy('created_at', 'desc')->published()->get()
         ]);
+    }
+
+    public function feed()
+    {
+        $shootings = Shooting::notHidden()->orderBy('created_at', 'desc')->published()->get();
+
+        header("Content-Type: application/atom+xml; charset=UTF-8");
+        header('Content-Disposition: attachment; filename="'.config('app.name').'.atom"');
+
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->formatOutput = true;
+        $feed = $dom->createElementNS('http://www.w3.org/2005/Atom', 'feed');
+        $dom->appendChild($feed);
+
+        $feed->appendChild($dom->createElement('updated', date('c')));
+        $feed->appendChild($self = $dom->createElement('link'));
+        $self->setAttribute('rel', 'self');
+
+        $feed->appendChild($alternate = $dom->createElement('link'));
+        $alternate->setAttribute('rel', 'alternate');
+        $alternate->setAttribute('href', route('welcome'));
+
+        $feed->appendChild($dom->createElement('title', config('app.name')));
+        $feed->appendChild($dom->createElement('logo', asset('/img/256.png')));
+
+        foreach ($shootings as $shooting) {
+            $feed->appendChild($entry = $dom->createElement('entry'));
+
+            $entry->appendChild($dom->createElement('title', $shooting->name));
+            $entry->appendChild($dom->createElement('id', $shooting->slug));
+            $entry->appendChild($dom->createElement('updated', date('c', strtotime($shooting->created_at))));
+
+            $entry->appendChild($content = $dom->createElement('content'));
+            $content->appendChild($div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div'));
+            $content->setAttribute('type', 'xhtml');
+
+            $count = $shooting->photos()->count() + $shooting->videos()->count();
+            $p = '<p>' .  (string)$count . ' medias
+            by <a href="' . route('authors.show.slug', $shooting->author->slug).'">'. $shooting->author->name .'</a>';
+
+            if (!empty($shooting->with)) {
+                $p .= 'with '. $shooting->with;
+            }
+
+            $p .= '</p>';
+
+            $f = $dom->createDocumentFragment();
+            $f->appendXML($p);
+
+            $div->appendChild($f);
+
+            if ($shooting->primary) {
+                $entry->appendChild($link = $dom->createElement('link'));
+                $link->setAttribute('rel', 'enclosure');
+                $link->setAttribute('type', 'image/jpeg');
+                $link->setAttribute('href', asset($shooting->primary->path('xl')));
+            }
+
+            $entry->appendChild($link = $dom->createElement('link'));
+            $link->setAttribute('rel', 'alternate');
+            $link->setAttribute('href', route('shootings.show.slug', $shooting->slug));
+        }
+
+        echo $dom->saveXML();
+        exit;
     }
 
     public function show(string $slug, string $exclusiveHash = null)

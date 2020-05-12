@@ -19,6 +19,7 @@ a:link, a:visited {
 
 a:link:hover, a:visited:hover {
     text-decoration: underline;
+    color: white;
 }
 
 body {
@@ -127,12 +128,18 @@ p.warning {
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 1024px;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
 }
 
 .grid li {
     flex: 0 1 25%;
-    display: inline-block;
+    display: inline-flex;
+}
+
+@media screen and (max-width: 800px) {
+    .grid li {
+        flex: 0 1 50%;
+    }
 }
 
 .grid li img {
@@ -278,7 +285,7 @@ ul.gallery li picture.caption:after {
 
 /* Welcome logo */
 ul.logo {
-    margin: 2rem;
+    margin: 1.5rem;
     font-size: 1.75rem;
     text-align: center;
     padding: 0 1rem;
