@@ -47,7 +47,7 @@ class ShootingController extends Controller
         foreach ($shootings as $shooting) {
             $feed->appendChild($entry = $dom->createElement('entry'));
 
-            $entry->appendChild($dom->createElement('title', $shooting->name));
+            $entry->appendChild($dom->createElement('title', htmlentities($shooting->name)));
             $entry->appendChild($dom->createElement('id', $shooting->slug));
             $entry->appendChild($dom->createElement('updated', date('c', strtotime($shooting->created_at))));
 
@@ -74,7 +74,7 @@ class ShootingController extends Controller
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'enclosure');
                 $link->setAttribute('type', 'image/jpeg');
-                $link->setAttribute('href', asset($shooting->primary->path('xl')));
+                $link->setAttribute('href', asset($shooting->primary->path('l')));
             }
 
             $entry->appendChild($link = $dom->createElement('link'));
