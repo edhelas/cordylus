@@ -29,7 +29,6 @@ class ShootingController extends Controller
         header('Content-Disposition: attachment; filename="'.config('app.name').'.atom"');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $dom->formatOutput = true;
         $feed = $dom->createElementNS('http://www.w3.org/2005/Atom', 'feed');
         $dom->appendChild($feed);
 
@@ -56,11 +55,10 @@ class ShootingController extends Controller
             $content->setAttribute('type', 'xhtml');
 
             $count = $shooting->photos()->count() + $shooting->videos()->count();
-            $p = '<p>' .  (string)$count . ' medias
-            by <a href="' . route('authors.show.slug', $shooting->author->slug).'">'. $shooting->author->name .'</a>';
+            $p = '<p>' .  (string)$count . ' medias by <a href="' . route('authors.show.slug', $shooting->author->slug).'">'. $shooting->author->name .'</a>';
 
             if (!empty($shooting->with)) {
-                $p .= 'with '. $shooting->with;
+                $p .= ' with '. $shooting->with;
             }
 
             $p .= '</p>';
