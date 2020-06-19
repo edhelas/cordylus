@@ -48,7 +48,7 @@ class ShootingController extends Controller
             $feed->appendChild($entry = $dom->createElement('entry'));
 
             $entry->appendChild($dom->createElement('title', htmlentities($shooting->name)));
-            $entry->appendChild($dom->createElement('id', base64_encode(Hash::make($shooting->slug.config('app.key')))$
+            $entry->appendChild($dom->createElement('id', base64_encode(Hash::make($shooting->slug.config('app.key')))));
             $entry->appendChild($dom->createElement('updated', date('c', strtotime($shooting->created_at))));
 
             $entry->appendChild($content = $dom->createElement('content'));
