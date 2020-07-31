@@ -240,7 +240,6 @@ ul.gallery li video {
 ul.gallery li picture > * {
     max-height: 100vh;
     max-width: 100vw;
-    min-height: 20rem;
 }
 
 ul.gallery li:not(.large) picture > * {
