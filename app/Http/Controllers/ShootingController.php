@@ -50,12 +50,15 @@ class ShootingController extends Controller
         foreach ($shootings as $shooting) {
             $feed->appendChild($entry = $dom->createElement('entry'));
 
-            $entry->appendChild($dom->createElement('title', htmlentities($shooting->name)));
+            $entry->appendChild($title = $dom->createElement('title'));
+            $title->appendChild($dom->createTextNode($shooting->name));
+
             $entry->appendChild($dom->createElement('id', route('shootings.show.slug', $shooting->slug)));
             $entry->appendChild($dom->createElement('updated', date('c', strtotime($shooting->created_at))));
 
             $entry->appendChild($author = $dom->createElement('author'));
-            $author->appendChild($dom->createElement('name', $shooting->author->name));
+            $author->appendChild($name = $dom->createElement('name'));
+            $name->appendChild($dom->createTextNode($shooting->author->name));
             $author->appendChild($dom->createElement('uri', route('authors.show.slug', $shooting->author->slug)));
 
             $entry->appendChild($content = $dom->createElement('content'));
