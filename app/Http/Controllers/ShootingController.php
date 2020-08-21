@@ -24,7 +24,7 @@ class ShootingController extends Controller
 
     public function feed()
     {
-        $shootings = Shooting::notHidden()->orderBy('created_at', 'desc')->published()->get();
+        $shootings = Shooting::notHidden()->with('author')->orderBy('created_at', 'desc')->published()->get();
 
         header("Content-Type: application/atom+xml; charset=UTF-8");
         header('Content-Disposition: attachment; filename="'.config('app.name').'.atom"');
@@ -36,6 +36,9 @@ class ShootingController extends Controller
         $feed->appendChild($dom->createElement('updated', date('c')));
         $feed->appendChild($self = $dom->createElement('link'));
         $self->setAttribute('rel', 'self');
+        $self->setAttribute('href', route('shootings.feed'));
+
+        $feed->appendChild($dom->createElement('id', route('welcome')));
 
         $feed->appendChild($alternate = $dom->createElement('link'));
         $alternate->setAttribute('rel', 'alternate');
@@ -48,8 +51,12 @@ class ShootingController extends Controller
             $feed->appendChild($entry = $dom->createElement('entry'));
 
             $entry->appendChild($dom->createElement('title', htmlentities($shooting->name)));
-            $entry->appendChild($dom->createElement('id', base64_encode(Hash::make($shooting->slug.config('app.key')))));
+            $entry->appendChild($dom->createElement('id', route('shootings.show.slug', $shooting->slug)));
             $entry->appendChild($dom->createElement('updated', date('c', strtotime($shooting->created_at))));
+
+            $entry->appendChild($author = $dom->createElement('author'));
+            $author->appendChild($dom->createElement('name', $shooting->author->name));
+            $author->appendChild($dom->createElement('uri', route('authors.show.slug', $shooting->author->slug)));
 
             $entry->appendChild($content = $dom->createElement('content'));
             $content->appendChild($div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div'));
