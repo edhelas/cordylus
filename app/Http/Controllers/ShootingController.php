@@ -38,7 +38,7 @@ class ShootingController extends Controller
         $self->setAttribute('rel', 'self');
         $self->setAttribute('href', route('shootings.feed'));
 
-        $feed->appendChild($dom->createElement('id', route('welcome')));
+        $feed->appendChild($dom->createElement('id', route('welcome').'/'));
 
         $feed->appendChild($alternate = $dom->createElement('link'));
         $alternate->setAttribute('rel', 'alternate');
