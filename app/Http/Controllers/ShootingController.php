@@ -33,7 +33,13 @@ class ShootingController extends Controller
         $feed = $dom->createElementNS('http://www.w3.org/2005/Atom', 'feed');
         $dom->appendChild($feed);
 
-        $feed->appendChild($dom->createElement('updated', date('c')));
+        $feed->appendChild(
+            $dom->createElement('updated',
+                $shootings->count() > 0
+                    ? date('c', strtotime($shootings->first()->created_at))
+                    : date('c')
+            )
+        );
         $feed->appendChild($self = $dom->createElement('link'));
         $self->setAttribute('rel', 'self');
         $self->setAttribute('href', route('shootings.feed'));
