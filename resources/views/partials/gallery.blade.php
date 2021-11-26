@@ -1,7 +1,7 @@
 <ul class="gallery">
     @foreach ($shootings as $shooting)
         <li class="active" onclick="redirect('{{route('shootings.show.slug', $shooting->slug)}}')">
-            @if ($shooting->photos()->count() > 0)
+            @if ($shooting->photos()->where('published', true)->count() > 0)
                 @include('partials.picture', ['picture' => $shooting->primary, 'gallery' => true])
             @endif
             <div class="label">
@@ -16,7 +16,7 @@
                 </span>
             </div>
             <div class="description">
-                {{ $shooting->photos()->count() + $shooting->videos()->count()}} medias
+                {{ $shooting->photos()->where('published', true)->count() + $shooting->videos()->where('published', true)->count()}} medias
             </div>
         </li>
     @endforeach
