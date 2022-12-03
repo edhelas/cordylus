@@ -13,10 +13,12 @@
                 <h2>Create</h2>
             @endif
         </div>
-        <div class="form-group col-md-6">
-            <label>Exclusive link</label>
-            <input type="text" readonly value="{{route('shootings.show.slug', [$shooting->slug, $shooting->exclusive_hash])}}" class="form-control form-control-sm"/>
-        </div>
+        @if ($shooting->id)
+            <div class="form-group col-md-6">
+                <label>Exclusive link</label>
+                <input type="text" readonly value="{{route('shootings.show.slug', [$shooting->slug, $shooting->exclusive_hash])}}" class="form-control form-control-sm"/>
+            </div>
+        @endif
     </div>
 
     <div class="clearfix pb-1">
