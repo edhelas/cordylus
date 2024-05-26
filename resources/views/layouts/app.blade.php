@@ -25,10 +25,14 @@
     {{--Set default share picture after custom section pictures--}}
     {!! MetaTag::tag('image', asset('img/256.png')) !!}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/utils.js') }}" defer></script>
 </head>
-<body>
+<body @if (isset($background))class="welcome" style="background-image: url('{{asset($background->path('l', 'jpg'))}}');"@endif>
     <header>
         <h1>
             <a href="@if (url()->current() == url(route('welcome')))/@else{{route('shootings.gallery')}}@endif">
@@ -42,10 +46,10 @@
         @yield('content')
     </main>
     <footer>
-        Since 2018
-        | <a href="{{ route('shootings.feed') }}">Feed</a>
-        | <a href="{{ route('about') }}">About Us</a>
-        | All models appearing on this website are 18 years of age or older
+        Since 2018<br />
+        <a href="{{ route('shootings.feed') }}">Feed</a>
+        – <a href="{{ route('about') }}">About Us</a>
+        – All models appearing on this website are 18 years of age or older
     </footer>
 </body>
 </html>

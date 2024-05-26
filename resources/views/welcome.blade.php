@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'background' => $background
+])
 
 @section('content')
-
-    <ul class="grid">
-        <li><img src="img/1.jpg"></li>
-        <li><img src="img/2.jpg"></li>
-        <li><img src="img/3.jpg"></li>
-        <li><img src="img/4.jpg"></li>
-    </ul>
+    <p class="warning">
+        This site contains dipictions of sexual acts involving latex and other subjects of an adult and fetishistic nature.
+        <br />
+        By proceeding you certify that you are over the age of consent to view material of this nature in your present location.
+    </p>
 
     <ul class="logo">
         <li>
@@ -17,18 +17,12 @@
         </li>
     </ul>
 
-    <p class="warning">
-        This site contains dipictions of sexual acts involving latex and other subjects of an adult and fetishistic nature.
-        <br />
-        By proceeding you certify that you are over the age of consent to view material of this nature in your present location.
-    </p>
-
     <ul class="logo second">
         <li>
             <a href="https://www.patreon.com/kinky_lab">
                 <img src="img/patreon.svg">Patreon
             </a>
-        </li><br />
+        </li>
         <li>
             <a href="https://www.instagram.com/shinyelensil/">
                 <img src="img/instagram.svg">Instagram
@@ -49,11 +43,11 @@
                 <img src="img/fetlife.svg">Fetlife
             </a>
         </li>
-        <li>
+        <!--<li>
             <a href="https://www.etsy.com/shop/KinkyLab/">
                 <img src="img/etsy.svg">Etsy
             </a>
-        </li>
+        </li>-->
         <!--<li>
             <a href="https://ko-fi.com/shinyelensil">
                 <img src="img/kofi.svg">Ko-fi

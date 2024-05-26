@@ -65,5 +65,5 @@
             {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
         </div>
 
-    {!! Form::close() !!}
+    </form>
 @endsection

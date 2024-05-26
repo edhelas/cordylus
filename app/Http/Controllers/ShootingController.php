@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Photo;
 use Illuminate\Support\Facades\Hash;
 
 use App\Shooting;
@@ -12,7 +13,9 @@ class ShootingController extends Controller
 {
     public function welcome()
     {
-        return view('welcome');
+        return view('welcome', [
+            'background' => Photo::where('exclusive', false)->inRandomOrder()->first()
+        ]);
     }
 
     public function index()

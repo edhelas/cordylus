@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Shooting extends Model
 {
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'date',
+    ];
     protected $guarded = [];
 
     protected static function boot()

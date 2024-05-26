@@ -10,11 +10,6 @@ use App\Http\Controllers\Controller;
 
 class ShootingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('shootings.index', [
@@ -22,11 +17,6 @@ class ShootingController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('shootings.create_edit', [
@@ -35,12 +25,6 @@ class ShootingController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -58,12 +42,6 @@ class ShootingController extends Controller
         return redirect()->route('shootings.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Shooting $shooting)
     {
         if (!$shooting->isMine()) abort(403);
@@ -74,13 +52,6 @@ class ShootingController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $shooting = Shooting::findOrFail($id);
@@ -101,12 +72,6 @@ class ShootingController extends Controller
         return redirect()->route('shootings.edit', $id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
