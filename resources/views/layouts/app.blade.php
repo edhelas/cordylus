@@ -32,7 +32,7 @@
     <link href="{{ asset('css/app.css') }}?1" rel="stylesheet">
     <script src="{{ asset('js/utils.js') }}" defer></script>
 </head>
-<body @if (isset($background))class="welcome" style="background-image: url('{{asset($background->path('l', 'jpg'))}}');"@endif>
+<body @if (isset($background))class="welcome" style="background-image: url('{{asset($background->path('sl', 'jpg'))}}');"@endif>
     <header>
         <h1>
             <a href="@if (url()->current() == url(route('welcome')))/@else{{route('shootings.gallery')}}@endif">

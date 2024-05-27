@@ -164,6 +164,9 @@ p.warning {
 }
 
 .gallery li picture {
+    aspect-ratio: 2 / 3;
+    display: block;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
