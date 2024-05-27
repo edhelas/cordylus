@@ -27,7 +27,7 @@
 @section('content')
     <ul class="gallery">
         @foreach ($shooting->photos as $key => $photo)
-            <li class="large">
+            <li>
                 @include('partials.picture', ['picture' => $photo])
 
                 {!! Form::open([

@@ -163,6 +163,10 @@ p.warning {
     cursor: pointer;
 }
 
+.gallery li video {
+    width: 100%;
+}
+
 .gallery li picture {
     aspect-ratio: 2 / 3;
     display: block;
