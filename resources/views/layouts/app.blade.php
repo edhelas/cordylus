@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css') }}?1" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?2" rel="stylesheet">
     <script src="{{ asset('js/utils.js') }}" defer></script>
 </head>
 <body @if (isset($background))class="welcome" style="background-image: url('{{asset($background->path('sl', 'jpg'))}}');"@endif>
