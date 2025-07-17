@@ -20,6 +20,6 @@ class Model extends EloquentModel
 
     public function getPrimaryAttribute(): ?Photo
     {
-        return $this->shootings()->first()?->primary;
+        return $this->shootings()->where('published', true)->last()?->primary;
     }
 }

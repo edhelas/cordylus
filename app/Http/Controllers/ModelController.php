@@ -11,7 +11,7 @@ class ModelController extends Controller
 {
     public function index()
     {
-        $models = Model::all();
+        $models = Model::orderBy('name')->get();
 
         MetaTag::set('title', '/KinkyLab/ – Models');
 
