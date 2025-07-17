@@ -18,11 +18,19 @@ class Model extends EloquentModel
         return $this->belongsToMany('App\Photo')->withPivot('validated', 'comment')->withTimestamps();
     }
 
+    public function shootingsPhotos()
+    {
+        return $this->belongsToMany('App\Photo')->whereIn('shooting_id', function ($query) {
+            $query->select('shooting_id')
+                  ->from('model_shooting')
+                  ->where('model_id', $this->id);
+        })->withTimestamps();
+    }
+
     public function getPrimaryAttribute()
     {
-        $this->photos()
-            ->latest()
+        $this->shootingsPhotos()
             ->where('published', true)
-            ->first();
+            ->latest();
     }
 }
