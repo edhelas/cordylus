@@ -17,7 +17,7 @@
         'files'=>'true'
     ]) !!}
 
-        <div class="form-group row">
+        <div class="row">
             {!! Form::file('photo', $photo->file, ['class' => 'form-control', 'required']); !!}
         </div>
 

@@ -28,11 +28,11 @@
                 <img src="img/instagram.svg">Instagram
             </a>
         </li>
-        <li>
+        <!--<li>
             <a href="https://twitter.com/Kinky_Lab">
                 <img src="img/twitter.svg">Twitter
             </a>
-        </li>
+        </li>-->
         <li>
             <a href="https://www.youtube.com/channel/UCfQmxAdCh01Wx8A8FtZU2_g">
                 <img src="img/youtube.svg">YouTube

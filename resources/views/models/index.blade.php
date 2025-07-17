@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<a href="{{ route('models.create') }}" class="btn btn-success float-right">Create</a>
+<a href="{{ route('models.create') }}" class="btn btn-success float-end">Create</a>
 <h1>Models <small class="text-muted h5">{{$models->count()}}</small></h1>
 
 <table class="table">
@@ -24,7 +24,7 @@
                 <a href="{{$model->website}}">{{$model->website}}</a>
             </td>
             <td>
-                <a href="{{ route('models.edit', $model) }}" class="btn btn-warning btn-sm float-right">Edit</a>
+                <a href="{{ route('models.edit', $model) }}" class="btn btn-warning btn-sm float-end">Edit</a>
             </td>
         </tr>
         @endforeach

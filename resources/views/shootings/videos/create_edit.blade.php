@@ -17,36 +17,36 @@
         'files'=>'true'
     ]) !!}
 
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                {!! Form::label('preview_h264', 'Preview H264 *') !!}
+        <div class="row">
+            <div class="col-md-4">
+                {!! Form::label('preview_h264', 'Preview H264 *', ['class' => 'form-label']) !!}
                 {!! Form::url('preview_h264', $video->preview_h264, ['class' => 'form-control', 'required']); !!}
             </div>
 
-            <div class="form-group col-md-4">
-                {!! Form::label('preview_webm', 'Preview WebM *') !!}
+            <div class="col-md-4">
+                {!! Form::label('preview_webm', 'Preview WebM *', ['class' => 'form-label']) !!}
                 {!! Form::url('preview_webm', $video->preview_webm, ['class' => 'form-control', 'required']); !!}
             </div>
         </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                {!! Form::label('720_h264', '720p H264') !!}
+        <div class="row">
+            <div class="col-md-4">
+                {!! Form::label('720_h264', '720p H264', ['class' => 'form-label']) !!}
                 {!! Form::url('720_h264', $video->{'720_h264'}, ['class' => 'form-control', 'required']); !!}
             </div>
 
-            <div class="form-group col-md-4">
-                {!! Form::label('720_webm', '720p WebM') !!}
+            <div class="col-md-4">
+                {!! Form::label('720_webm', '720p WebM', ['class' => 'form-label']) !!}
                 {!! Form::url('720_webm', $video->{'720_webm'}, ['class' => 'form-control', 'required']); !!}
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="form-group col-md-4">
-                {!! Form::label('cover', 'Cover *') !!}
+        <div class="row">
+            <div class="col-md-4">
+                {!! Form::label('cover', 'Cover *', ['class' => 'form-label']) !!}
                 {!! Form::file('cover', ['class' => 'form-control', $video->id ?? 'required', '']); !!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="col-md-4">
                 @if ($video->cover)
                     <p>Current cover</p>
                     <img src="{{asset($video->cover)}}" style="max-width: 200px"/>

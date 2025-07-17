@@ -17,7 +17,7 @@ class ModelController extends Controller
     public function index()
     {
         return view('models.index', [
-            'models' => Model::all()
+            'models' => Model::orderBy('name')->get()
         ]);
     }
 
