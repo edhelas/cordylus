@@ -83,7 +83,7 @@
 
         <h3>Videos</h3>
 
-        <div class="row mb-2 p-3">
+        <div class="row g-2">
             @foreach ($shooting->videos as $video)
                 <div class="col-sm-4 p-0 card">
                     <div class="p-1">
@@ -122,7 +122,7 @@
 
         <h3 id="photos">Photos</h3>
 
-        <div class="row">
+        <div class="row g-2">
             @foreach ($shooting->photos as $photo)
                 <div class="col-sm-4" id="{{$photo->id}}">
                     <div class="p-0 card">
@@ -130,7 +130,7 @@
                             <a href="{{ route($photo->published ? 'shootings.photos.unpublish' : 'shootings.photos.publish', [$shooting, $photo]) }}"
                                 class="btn {{ $photo->published ? 'btn-success' : 'btn-secondary' }} btn-sm"
                                 title="{{ $photo->published ? 'Published' : 'Unpublished' }}">
-                                {{ $photo->published ? 'Publ. ✓' : 'Unp. ✗' }}
+                                {{ $photo->published ? '✓' : '✗' }}
                             </a>
                             <div class="btn-group" role="group">
                                 <a href="{{ route('shootings.photos.edit', [$shooting, $photo]) }}" title="Edit" class="btn btn-warning btn-sm">✏️</a>
