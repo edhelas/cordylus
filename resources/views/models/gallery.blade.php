@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('subtitle')Models@endsection
+@section('subtitle')Models @endsection
 
 @section('content')
     <ul class="gallery">

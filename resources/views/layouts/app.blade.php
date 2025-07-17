@@ -47,7 +47,8 @@
     </main>
     <footer>
         Since 2018<br />
-        <a href="{{ route('shootings.feed') }}">Feed</a>
+        <a href="{{ route('models.index') }}">Models</a>
+        – <a href="{{ route('shootings.feed') }}">Feed</a>
         – <a href="{{ route('about') }}">About Us</a>
         – All models appearing on this website are 18 years of age or older
     </footer>

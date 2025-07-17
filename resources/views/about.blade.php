@@ -5,8 +5,8 @@
 @section('content')
 
 <article>
+    <!--
     <h2>Authors</h2>
-
     @foreach ($authors as $author)
         <h3 class="center"><a href="{{route('authors.show.slug', $author->slug)}}">{{ $author->name }}</a><h3>
 
@@ -28,7 +28,7 @@
         <p>{{$author->description}}</p>
     @endforeach
 
-    <hr >
+    <hr >-->
 
     <h2>Support Us</h2>
 
