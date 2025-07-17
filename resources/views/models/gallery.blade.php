@@ -9,7 +9,7 @@
                 <div class="label">
                     {{ $model->name }}
                 </div>
-                @if ($model->photos()->where('published', true)->count() > 0)
+                @if ($model->primary)
                     @include('partials.picture', ['picture' => $model->primary, 'gallery' => true])
                 @endif
             </li>
