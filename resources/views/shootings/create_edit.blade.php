@@ -114,11 +114,18 @@
 
         <hr />
 
-        <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm float-end">Add</a>
+        <div class="float-end row g-2">
+            <div class="col-sm-8">
+                <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-primary btn-sm float-end">
+                    Publish All
+                </a>
+            </div>
 
-        <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-primary btn-sm float-end">
-            Publish All
-        </a>
+            <div class="col-sm-4">
+                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm float-end">Add</a>
+            </div>
+        </div>
+
 
         <h3 id="photos">Photos</h3>
 
@@ -151,7 +158,7 @@
                                 </a>
                                 <a href="{{ route($photo->exclusive ? 'shootings.photos.unexclusive' : 'shootings.photos.exclusive', [$shooting, $photo]) }}"
                                         class="btn {{ $photo->exclusive ? 'btn-info' : 'btn-link' }} btn-sm">
-                                    Exclusive
+                                    Excl.
                                 </a>
                             </div>
                         </div>
@@ -177,22 +184,20 @@
 
         <hr />
 
-        <div class="float-end">
-            {!! Form::open(['route' => ['shootings.models.add', $shooting->id], 'class' => 'row g-1']) !!}
-                <div class="col-sm-8">
-                    {!! Form::select(
-                        'model_id',
-                        $models->whereNotIn('id', $shooting->models->pluck('id'))
-                            ->pluck('name', 'id'),
-                        null,
-                        ['class' => 'form-control form-control-sm']);
-                    !!}
-                </div>
-                <div class="col-sm">
-                    {!! Form::submit('+', ['class' => 'btn btn-success btn-sm']); !!}
-                </div>
-            {!! Form::close() !!}
-        </div>
+        {!! Form::open(['route' => ['shootings.models.add', $shooting->id], 'class' => 'row g-2 float-end']) !!}
+            <div class="col-sm-8">
+                {!! Form::select(
+                    'model_id',
+                    $models->whereNotIn('id', $shooting->models->pluck('id'))
+                        ->pluck('name', 'id'),
+                    null,
+                    ['class' => 'form-select form-select-sm']);
+                !!}
+            </div>
+            <div class="col-sm-4">
+                {!! Form::submit('Add', ['class' => 'btn btn-success btn-sm']); !!}
+            </div>
+        {!! Form::close() !!}
 
         <h3>Models</h3>
 
