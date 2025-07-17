@@ -88,7 +88,7 @@ class Shooting extends Model
         })->implode(', ');
     }
 
-    public function getPrimaryAttribute()
+    public function getPrimaryAttribute(): ?Photo
     {
         if ($this->primary_photo_id
         && $first = $this->photos()

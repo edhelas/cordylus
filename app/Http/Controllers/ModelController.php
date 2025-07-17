@@ -11,7 +11,7 @@ class ModelController extends Controller
 {
     public function index()
     {
-        $models = Model::with('photos')->get();
+        $models = Model::all();
 
         MetaTag::set('title', '/KinkyLab/ – Models');
 
