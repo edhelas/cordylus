@@ -9,6 +9,21 @@ use MetaTag;
 
 class ModelController extends Controller
 {
+    public function index()
+    {
+        $models = Model::with('photos')->get();
+
+        MetaTag::set('title', '/KinkyLab/ – Models');
+
+        if ($models->first()->shootings()->first()) {
+            MetaTag::set('image', asset($models->first()->shootings()->first()->primary->path('l')));
+        }
+
+        return view('models.gallery', [
+            'models' => $models
+        ]);
+    }
+
     public function show($slug)
     {
         $model = Model::where('slug', $slug)->firstOrFail();

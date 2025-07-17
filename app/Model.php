@@ -17,4 +17,12 @@ class Model extends EloquentModel
     {
         return $this->belongsToMany('App\Photo')->withPivot('validated', 'comment')->withTimestamps();
     }
+
+    public function getPrimaryAttribute()
+    {
+        $this->photos()
+            ->latest()
+            ->where('published', true)
+            ->first();
+    }
 }

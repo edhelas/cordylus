@@ -54,6 +54,7 @@ Route::get('s/{slug}/{hash?}', 'ShootingController@show')->name('shootings.show.
 Route::get('a/{slug}', 'AuthorController@show')->name('authors.show.slug');
 
 # Model
+Route::get('m', 'ModelController@index')->name('models.index');
 Route::get('m/{slug}', 'ModelController@show')->name('models.show.slug');
 Route::post('m/{hash}', 'Admin\ModelPhotoController@create')->name('models.photos.create');
 
