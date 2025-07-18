@@ -114,20 +114,15 @@
 
         <hr />
 
-        <div class="float-end row g-2">
-            <div class="col-sm-8">
-                <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-primary btn-sm float-end">
-                    Publish All
-                </a>
-            </div>
+        <div class="btn-group float-end">
+            <a href="{{ route('shootings.photos.publish_all', $shooting) }}" title="Publish All" class="btn btn-primary btn-sm ">
+                Publish All
+            </a>
 
-            <div class="col-sm-4">
-                <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm float-end">Add</a>
-            </div>
+            <a href="{{ route('shootings.photos.create', $shooting) }}" class="btn btn-success btn-sm">Add</a>
         </div>
 
-
-        <h3 id="photos">Photos</h3>
+        <h3 id="photos" class="clearfix">Photos</h3>
 
         <div class="row g-2">
             @foreach ($shooting->photos as $photo)
@@ -184,24 +179,24 @@
 
         <hr />
 
-        {!! Form::open(['route' => ['shootings.models.add', $shooting->id], 'class' => 'row g-2 float-end']) !!}
-            <div class="col-sm-8">
+        {!! Form::open(['route' => ['shootings.models.add', $shooting->id], 'class' => 'row g-2 align-items-end float-end']) !!}
+            <div class="col-8">
                 {!! Form::select(
                     'model_id',
                     $models->whereNotIn('id', $shooting->models->pluck('id'))
                         ->pluck('name', 'id'),
                     null,
-                    ['class' => 'form-select form-select-sm']);
+                    ['class' => 'form-select form-select-sm col-12']);
                 !!}
             </div>
-            <div class="col-sm-4">
-                {!! Form::submit('Add', ['class' => 'btn btn-success btn-sm']); !!}
+            <div class="col-4">
+                {!! Form::submit('Add', ['class' => 'btn btn-success btn-sm col-12']); !!}
             </div>
         {!! Form::close() !!}
 
         <h3>Models</h3>
 
-        <div class="row">
+        <div class="row g-2">
             @foreach ($shooting->models as $model)
                 <div class="col-sm-3">
                     <div class="p-0 card">

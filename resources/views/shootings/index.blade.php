@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('shootings.create') }}" class="btn btn-success float-end">Create</a>
-<h1>Shootings <small class="text-muted h5">{{$shootings->count()}}</small></h1>
+<h1 class="clearfix">Shootings <small class="text-muted h5">{{$shootings->count()}}</small></h1>
 
 <div class="row g-2">
     @foreach ($shootings as $shooting)
